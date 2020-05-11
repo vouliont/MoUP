@@ -1,0 +1,8 @@
+"OK" = "Ok";
+
+"API_ERROR_SESSION_WAS_NOT_INITIATED" = "Session was not initiated.";
+"API_ERROR_NO_INTERNET" = "No internet connection.";
+"API_ERROR_GENERAL_ERROR" = "General error.";
+"API_ERROR_USER_NOT_FOUND" = "User with this login not found.";
+
+"ERROR_HAS_OCCURED_TITLE" = "Error has occured";

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="hRS-ux-lde">
+            <objects>
+                <viewController storyboardIdentifier="loginViewController" id="wrj-tV-42A" customClass="LoginViewController" customModule="MoU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1fk-A2-iMo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8b-uG-7lW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aI5-5g-x6U" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JLT-Np-TLT">
+                                                <rect key="frame" x="80" y="346" width="254" height="160"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Login or email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yr0-fx-qZ4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="254" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="w4K-6T-uzC"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="email"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2GU-hh-eBa">
+                                                        <rect key="frame" x="0.0" y="60" width="254" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="iFh-Tc-hFY"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4U-kH-tqf" customClass="BaseButton" customModule="MoU" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="120" width="254" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="B6D-v6-6zp"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Log in">
+                                                            <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <state key="disabled">
+                                                            <color key="titleColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="20"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColorDisabled">
+                                                                <color key="value" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="JLT-Np-TLT" firstAttribute="centerY" secondItem="aI5-5g-x6U" secondAttribute="centerY" id="5PS-71-Q9u"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="JLT-Np-TLT" secondAttribute="bottom" constant="120" id="7Fv-Tp-z12"/>
+                                            <constraint firstItem="JLT-Np-TLT" firstAttribute="width" secondItem="aI5-5g-x6U" secondAttribute="width" priority="999" id="FAH-cs-wp8"/>
+                                            <constraint firstItem="JLT-Np-TLT" firstAttribute="centerX" secondItem="aI5-5g-x6U" secondAttribute="centerX" id="Frs-wg-ND5"/>
+                                            <constraint firstItem="JLT-Np-TLT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aI5-5g-x6U" secondAttribute="leading" constant="80" id="jGJ-tQ-F1S"/>
+                                            <constraint firstItem="JLT-Np-TLT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aI5-5g-x6U" secondAttribute="top" constant="120" id="yvV-K2-ep2"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aI5-5g-x6U" secondAttribute="trailing" id="2Bz-BB-sgM"/>
+                                    <constraint firstItem="aI5-5g-x6U" firstAttribute="width" secondItem="K8b-uG-7lW" secondAttribute="width" id="2Ys-El-fwo"/>
+                                    <constraint firstItem="aI5-5g-x6U" firstAttribute="bottom" secondItem="K8b-uG-7lW" secondAttribute="bottom" id="ISc-ZG-OKB"/>
+                                    <constraint firstItem="aI5-5g-x6U" firstAttribute="height" secondItem="K8b-uG-7lW" secondAttribute="height" priority="250" id="TwT-je-cEV"/>
+                                    <constraint firstItem="aI5-5g-x6U" firstAttribute="leading" secondItem="K8b-uG-7lW" secondAttribute="leading" id="gFO-6s-YQk"/>
+                                    <constraint firstItem="aI5-5g-x6U" firstAttribute="top" secondItem="K8b-uG-7lW" secondAttribute="top" id="zJH-zN-gWt"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K8b-uG-7lW" firstAttribute="leading" secondItem="3zz-vz-7f0" secondAttribute="leading" id="NR1-A5-8Ug"/>
+                            <constraint firstItem="K8b-uG-7lW" firstAttribute="trailing" secondItem="3zz-vz-7f0" secondAttribute="trailing" id="eqL-ol-3MD"/>
+                            <constraint firstAttribute="bottom" secondItem="K8b-uG-7lW" secondAttribute="bottom" id="gSi-xF-qnx"/>
+                            <constraint firstItem="K8b-uG-7lW" firstAttribute="top" secondItem="3zz-vz-7f0" secondAttribute="top" id="jVq-uH-GhX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3zz-vz-7f0"/>
+                    </view>
+                    <connections>
+                        <outlet property="logInButton" destination="C4U-kH-tqf" id="ujb-fG-ldt"/>
+                        <outlet property="loginTextField" destination="Yr0-fx-qZ4" id="dJw-b8-opI"/>
+                        <outlet property="mainView" destination="K8b-uG-7lW" id="fqa-xN-B9j"/>
+                        <outlet property="mainViewBottomPadding" destination="gSi-xF-qnx" id="xSg-bB-OPE"/>
+                        <outlet property="passwordTextField" destination="2GU-hh-eBa" id="3Wf-9u-i7h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Czb-wg-cuo" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="119.86607142857142"/>
+        </scene>
+    </scenes>
+</document>

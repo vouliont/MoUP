@@ -1,0 +1,3 @@
+// todo
+"API_ERROR_GENERAL_ERROR" = "Генеральна помилка.";
+"API_ERROR_USER_NOT_FOUND" = "Користувача зі вказаним логіном не знайдено.";
