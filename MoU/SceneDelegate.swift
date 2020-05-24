@@ -9,6 +9,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        App.shared.sceneDelegate = self
         loadController()
     }
 
@@ -41,24 +42,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     private func isLoggedIn() -> Bool {
-        return App.shared.session?.token != nil
+        return App.shared.session.token != nil
     }
     
-    private func loadController() {
+    func loadController() {
         isLoggedIn() ? loadMainViewController() : loadLoginViewController()
+    }
+    
+    func loadLoadingController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loadingViewController = storyboard.instantiateInitialViewController()!
+        window?.rootViewController = loadingViewController
     }
     
     private func loadLoginViewController() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
         window?.rootViewController = loginViewController
     }
     
     private func loadMainViewController() {
-        // todo
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let mainViewController = storyboard.instantiateViewController(withIdentifier: "mainViewController") as! MainViewController
-//        window?.rootViewController = mainViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: "homeViewController")
+        window?.rootViewController = homeViewController
     }
 }
 

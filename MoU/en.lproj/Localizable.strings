@@ -6,3 +6,13 @@
 "API_ERROR_USER_NOT_FOUND" = "User with this login not found.";
 
 "ERROR_HAS_OCCURED_TITLE" = "Error has occured";
+
+"FROM_DATE" = "From: %@";
+
+"FACULTIES" = "Faculties";
+"CATHEDRAS" = "Cathedras";
+
+"NEW_FACULTY_TITLE" = "New Faculty";
+"EDIT_FACULTY_TITLE" = "Edit Faculty";
+
+"DELETE" = "Delete";

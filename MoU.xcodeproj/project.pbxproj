@@ -8,6 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		18F0C4E6CE2504E53218F616 /* Pods_MoU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C850DE3C3ECB6846FC7B477 /* Pods_MoU.framework */; };
+		2C171C83246B0B56005881F7 /* FacultiesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C82246B0B56005881F7 /* FacultiesListViewController.swift */; };
+		2C171C85246B0B8A005881F7 /* FacultiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C84246B0B8A005881F7 /* FacultiesListViewModel.swift */; };
+		2C171C87246B0C10005881F7 /* Faculty.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C171C86246B0C10005881F7 /* Faculty.storyboard */; };
+		2C171C89246B0D5D005881F7 /* GeneralApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C88246B0D5D005881F7 /* GeneralApi.swift */; };
+		2C171C8B246B0D96005881F7 /* Faculty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C8A246B0D96005881F7 /* Faculty.swift */; };
+		2C171C8D246B0DAD005881F7 /* Cathedra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C8C246B0DAD005881F7 /* Cathedra.swift */; };
+		2C171C92246B10BD005881F7 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C171C91246B10BD005881F7 /* LoadingCell.xib */; };
+		2C171C94246B1EF7005881F7 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C93246B1EF7005881F7 /* Pagination.swift */; };
+		2C171C96246B4F6C005881F7 /* FacultyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C95246B4F6C005881F7 /* FacultyDetailsViewController.swift */; };
+		2C171C98246B597E005881F7 /* FacultyCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C97246B597E005881F7 /* FacultyCellData.swift */; };
+		2C171C9A246B6027005881F7 /* FacultyDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171C99246B6027005881F7 /* FacultyDetailsViewModel.swift */; };
+		2C171CC02472D64F005881F7 /* FacultyCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CBF2472D64F005881F7 /* FacultyCreateEditViewController.swift */; };
+		2C171CC22472D67A005881F7 /* FacultyCreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CC12472D67A005881F7 /* FacultyCreateEditViewModel.swift */; };
+		2C171CC42472F0A3005881F7 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CC32472F0A2005881F7 /* UIView.swift */; };
+		2C171CC82473EDE0005881F7 /* CathedraCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CC72473EDE0005881F7 /* CathedraCellData.swift */; };
+		2C171CCA2473FAF1005881F7 /* FacultyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C171CC92473FAF1005881F7 /* FacultyCell.xib */; };
+		2C171CCC247401A9005881F7 /* FacultyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CCB247401A9005881F7 /* FacultyCell.swift */; };
+		2C171CD124740BFB005881F7 /* CathedraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C171CD024740BFB005881F7 /* CathedraCell.xib */; };
+		2C171CD324740C15005881F7 /* CathedraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CD224740C15005881F7 /* CathedraCell.swift */; };
+		2C171CD524741050005881F7 /* HomeCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CD424741050005881F7 /* HomeCellData.swift */; };
+		2C173DA5247982DE000CCF6C /* RestrictTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C173DA4247982DE000CCF6C /* RestrictTextField.swift */; };
+		2C173DA724799388000CCF6C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C173DA624799387000CCF6C /* Date.swift */; };
+		2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25C2475616900D4C0A2 /* UIResponder.swift */; };
+		2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */; };
 		2C46E90C2462F0E6001528CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E90B2462F0E6001528CA /* AppDelegate.swift */; };
 		2C46E90E2462F0E6001528CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E90D2462F0E6001528CA /* SceneDelegate.swift */; };
 		2C46E9102462F0E6001528CA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E90F2462F0E6001528CA /* LoginViewController.swift */; };
@@ -34,7 +58,13 @@
 		2C46E9712468236C001528CA /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C46E9702468236B001528CA /* Login.storyboard */; };
 		2C46E97324686FD8001528CA /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E97224686FD7001528CA /* App.swift */; };
 		2C46E9752468C537001528CA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E9742468C537001528CA /* String.swift */; };
-		2C46E97724698F36001528CA /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E97624698F36001528CA /* MainTabViewController.swift */; };
+		2C46E97724698F36001528CA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E97624698F36001528CA /* HomeViewController.swift */; };
+		2C46E979246991A3001528CA /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E978246991A3001528CA /* BaseNavigationController.swift */; };
+		2C46E97B246AF25C001528CA /* BaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E97A246AF25B001528CA /* BaseImageView.swift */; };
+		2C46E97E246AF5A8001528CA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E97D246AF5A8001528CA /* HomeViewModel.swift */; };
+		2C46E980246AF624001528CA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C46E97F246AF624001528CA /* Home.storyboard */; };
+		2C63322E2475856E00960611 /* TemporaryNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */; };
+		2C6332302475B95400960611 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63322F2475B95400960611 /* UINavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +82,30 @@
 
 /* Begin PBXFileReference section */
 		1C850DE3C3ECB6846FC7B477 /* Pods_MoU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C171C82246B0B56005881F7 /* FacultiesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesListViewController.swift; sourceTree = "<group>"; };
+		2C171C84246B0B8A005881F7 /* FacultiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultiesListViewModel.swift; sourceTree = "<group>"; };
+		2C171C86246B0C10005881F7 /* Faculty.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Faculty.storyboard; sourceTree = "<group>"; };
+		2C171C88246B0D5D005881F7 /* GeneralApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralApi.swift; sourceTree = "<group>"; };
+		2C171C8A246B0D96005881F7 /* Faculty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faculty.swift; sourceTree = "<group>"; };
+		2C171C8C246B0DAD005881F7 /* Cathedra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cathedra.swift; sourceTree = "<group>"; };
+		2C171C91246B10BD005881F7 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		2C171C93246B1EF7005881F7 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		2C171C95246B4F6C005881F7 /* FacultyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyDetailsViewController.swift; sourceTree = "<group>"; };
+		2C171C97246B597E005881F7 /* FacultyCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyCellData.swift; sourceTree = "<group>"; };
+		2C171C99246B6027005881F7 /* FacultyDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyDetailsViewModel.swift; sourceTree = "<group>"; };
+		2C171CBF2472D64F005881F7 /* FacultyCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyCreateEditViewController.swift; sourceTree = "<group>"; };
+		2C171CC12472D67A005881F7 /* FacultyCreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyCreateEditViewModel.swift; sourceTree = "<group>"; };
+		2C171CC32472F0A2005881F7 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2C171CC72473EDE0005881F7 /* CathedraCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraCellData.swift; sourceTree = "<group>"; };
+		2C171CC92473FAF1005881F7 /* FacultyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FacultyCell.xib; sourceTree = "<group>"; };
+		2C171CCB247401A9005881F7 /* FacultyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacultyCell.swift; sourceTree = "<group>"; };
+		2C171CD024740BFB005881F7 /* CathedraCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CathedraCell.xib; sourceTree = "<group>"; };
+		2C171CD224740C15005881F7 /* CathedraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraCell.swift; sourceTree = "<group>"; };
+		2C171CD424741050005881F7 /* HomeCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellData.swift; sourceTree = "<group>"; };
+		2C173DA4247982DE000CCF6C /* RestrictTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictTextField.swift; sourceTree = "<group>"; };
+		2C173DA624799387000CCF6C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2C39E25C2475616900D4C0A2 /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
+		2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		2C46E9082462F0E6001528CA /* MoU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C46E90B2462F0E6001528CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C46E90D2462F0E6001528CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,7 +121,6 @@
 		2C46E92C2462FE03001528CA /* Requester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requester.swift; sourceTree = "<group>"; };
 		2C46E92F24630558001528CA /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		2C46E947246575AF001528CA /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/Main.strings"; sourceTree = "<group>"; };
-		2C46E948246575AF001528CA /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2C46E94E2465763E001528CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C46E95024657644001528CA /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2C46E95224657DA6001528CA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -83,7 +136,13 @@
 		2C46E9702468236B001528CA /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2C46E97224686FD7001528CA /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2C46E9742468C537001528CA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		2C46E97624698F36001528CA /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		2C46E97624698F36001528CA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2C46E978246991A3001528CA /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
+		2C46E97A246AF25B001528CA /* BaseImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseImageView.swift; sourceTree = "<group>"; };
+		2C46E97D246AF5A8001528CA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		2C46E97F246AF624001528CA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryNavBarViewController.swift; sourceTree = "<group>"; };
+		2C63322F2475B95400960611 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		7DF349DF78F63B84D00874C7 /* Pods-MoU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoU.release.xcconfig"; path = "Target Support Files/Pods-MoU/Pods-MoU.release.xcconfig"; sourceTree = "<group>"; };
 		9388C37A72EFEC6DC865BF69 /* Pods-MoU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoU.debug.xcconfig"; path = "Target Support Files/Pods-MoU/Pods-MoU.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +167,89 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C171C81246B0AEB005881F7 /* FacultyViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2C171C82246B0B56005881F7 /* FacultiesListViewController.swift */,
+				2C171C84246B0B8A005881F7 /* FacultiesListViewModel.swift */,
+				2C171C95246B4F6C005881F7 /* FacultyDetailsViewController.swift */,
+				2C171C99246B6027005881F7 /* FacultyDetailsViewModel.swift */,
+				2C171CBF2472D64F005881F7 /* FacultyCreateEditViewController.swift */,
+				2C171CC12472D67A005881F7 /* FacultyCreateEditViewModel.swift */,
+				2C171C86246B0C10005881F7 /* Faculty.storyboard */,
+			);
+			path = FacultyViewController;
+			sourceTree = "<group>";
+		};
+		2C171C8E246B0F9C005881F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2C171CCE24740AE7005881F7 /* Base */,
+				2C171CCD247401D7005881F7 /* FacultyCell */,
+				2C171CCF24740BE7005881F7 /* CathedraCell */,
+				2C39E25E2475672E00D4C0A2 /* LoadingCell */,
+				2C173DA4247982DE000CCF6C /* RestrictTextField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2C171CC62473EDCF005881F7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C171C97246B597E005881F7 /* FacultyCellData.swift */,
+				2C171CC72473EDE0005881F7 /* CathedraCellData.swift */,
+				2C171CD424741050005881F7 /* HomeCellData.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C171CCD247401D7005881F7 /* FacultyCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C171CCB247401A9005881F7 /* FacultyCell.swift */,
+				2C171CC92473FAF1005881F7 /* FacultyCell.xib */,
+			);
+			path = FacultyCell;
+			sourceTree = "<group>";
+		};
+		2C171CCE24740AE7005881F7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2C46E97A246AF25B001528CA /* BaseImageView.swift */,
+				2C46E96024675014001528CA /* BaseButton.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		2C171CCF24740BE7005881F7 /* CathedraCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C171CD024740BFB005881F7 /* CathedraCell.xib */,
+				2C171CD224740C15005881F7 /* CathedraCell.swift */,
+			);
+			path = CathedraCell;
+			sourceTree = "<group>";
+		};
+		2C39E25E2475672E00D4C0A2 /* LoadingCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C171C91246B10BD005881F7 /* LoadingCell.xib */,
+				2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */,
+			);
+			path = LoadingCell;
+			sourceTree = "<group>";
+		};
+		2C39E2612475689B00D4C0A2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2C63322C2475850800960611 /* Custom */,
+				2C46E95124657D49001528CA /* LoginViewController */,
+				2C46E97C246AF593001528CA /* HomeViewController */,
+				2C171C81246B0AEB005881F7 /* FacultyViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		2C46E8FF2462F0E6001528CA = {
 			isa = PBXGroup;
 			children = (
@@ -129,22 +271,21 @@
 		2C46E90A2462F0E6001528CA /* MoU */ = {
 			isa = PBXGroup;
 			children = (
+				2C46E94F2465763E001528CA /* Localizable.strings */,
 				2C46E9252462FACF001528CA /* API */,
 				2C46E9222462F1E5001528CA /* Extensions */,
 				2C46E96224675616001528CA /* Model */,
 				2C46E95424657DF7001528CA /* Base */,
-				2C46E9572465808B001528CA /* Helpers */,
-				2C46E95124657D49001528CA /* LoginViewController */,
-				2C46E90B2462F0E6001528CA /* AppDelegate.swift */,
+				2C171C8E246B0F9C005881F7 /* Views */,
+				2C39E2612475689B00D4C0A2 /* Controllers */,
 				2C46E97224686FD7001528CA /* App.swift */,
+				2C46E90B2462F0E6001528CA /* AppDelegate.swift */,
 				2C46E90D2462F0E6001528CA /* SceneDelegate.swift */,
 				2C46E9112462F0E6001528CA /* Main.storyboard */,
 				2C46E9172462F0E8001528CA /* Assets.xcassets */,
 				2C46E9192462F0E8001528CA /* LaunchScreen.storyboard */,
 				2C46E91C2462F0E8001528CA /* Info.plist */,
 				2C46E9142462F0E6001528CA /* MoU.xcdatamodeld */,
-				2C46E94F2465763E001528CA /* Localizable.strings */,
-				2C46E97624698F36001528CA /* MainTabViewController.swift */,
 			);
 			path = MoU;
 			sourceTree = "<group>";
@@ -155,6 +296,10 @@
 				2C46E96A24681640001528CA /* NSObject.swift */,
 				2C46E96E24681C46001528CA /* NSManagedObject.swift */,
 				2C46E9742468C537001528CA /* String.swift */,
+				2C171CC32472F0A2005881F7 /* UIView.swift */,
+				2C39E25C2475616900D4C0A2 /* UIResponder.swift */,
+				2C63322F2475B95400960611 /* UINavigationBar.swift */,
+				2C173DA624799387000CCF6C /* Date.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,8 +308,8 @@
 			isa = PBXGroup;
 			children = (
 				2C46E92E246304DE001528CA /* Reqeusters */,
-				2C46E9262462FAEF001528CA /* ApiError.swift */,
 				2C46E9282462FBAD001528CA /* Api.swift */,
+				2C46E9262462FAEF001528CA /* ApiError.swift */,
 				2C46E92C2462FE03001528CA /* Requester.swift */,
 			);
 			path = API;
@@ -173,8 +318,9 @@
 		2C46E92E246304DE001528CA /* Reqeusters */ = {
 			isa = PBXGroup;
 			children = (
-				2C46E92A2462FBE1001528CA /* SessionApi.swift */,
 				2C46E92F24630558001528CA /* BaseApi.swift */,
+				2C46E92A2462FBE1001528CA /* SessionApi.swift */,
+				2C171C88246B0D5D005881F7 /* GeneralApi.swift */,
 			);
 			path = Reqeusters;
 			sourceTree = "<group>";
@@ -194,24 +340,20 @@
 			children = (
 				2C46E95524657E0C001528CA /* BaseViewModel.swift */,
 				2C46E95A2465B14B001528CA /* BaseViewController.swift */,
-				2C46E96024675014001528CA /* BaseButton.swift */,
+				2C46E978246991A3001528CA /* BaseNavigationController.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		2C46E9572465808B001528CA /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				2C46E95E2467390B001528CA /* KeyboardViewController.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		2C46E96224675616001528CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2C171CC62473EDCF005881F7 /* ViewModel */,
 				2C46E967246756AE001528CA /* CoreData */,
 				2C46E968246813B7001528CA /* DataStack.swift */,
+				2C171C8A246B0D96005881F7 /* Faculty.swift */,
+				2C171C8C246B0DAD005881F7 /* Cathedra.swift */,
+				2C171C93246B1EF7005881F7 /* Pagination.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +365,25 @@
 				2C46E96C246819C0001528CA /* Session.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2C46E97C246AF593001528CA /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2C46E97624698F36001528CA /* HomeViewController.swift */,
+				2C46E97D246AF5A8001528CA /* HomeViewModel.swift */,
+				2C46E97F246AF624001528CA /* Home.storyboard */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		2C63322C2475850800960611 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				2C46E95E2467390B001528CA /* KeyboardViewController.swift */,
+				2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		58B4F596AF2FE75D53B4502D /* Pods */ = {
@@ -296,9 +457,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C171C87246B0C10005881F7 /* Faculty.storyboard in Resources */,
 				2C46E91B2462F0E8001528CA /* LaunchScreen.storyboard in Resources */,
 				2C46E94D2465763E001528CA /* Localizable.strings in Resources */,
 				2C46E9182462F0E8001528CA /* Assets.xcassets in Resources */,
+				2C171C92246B10BD005881F7 /* LoadingCell.xib in Resources */,
+				2C171CCA2473FAF1005881F7 /* FacultyCell.xib in Resources */,
+				2C46E980246AF624001528CA /* Home.storyboard in Resources */,
+				2C171CD124740BFB005881F7 /* CathedraCell.xib in Resources */,
 				2C46E9712468236C001528CA /* Login.storyboard in Resources */,
 				2C46E9132462F0E6001528CA /* Main.storyboard in Resources */,
 			);
@@ -353,26 +519,51 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C171C94246B1EF7005881F7 /* Pagination.swift in Sources */,
+				2C171CD324740C15005881F7 /* CathedraCell.swift in Sources */,
+				2C46E979246991A3001528CA /* BaseNavigationController.swift in Sources */,
 				2C46E96124675014001528CA /* BaseButton.swift in Sources */,
+				2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */,
 				2C46E9102462F0E6001528CA /* LoginViewController.swift in Sources */,
+				2C171C9A246B6027005881F7 /* FacultyDetailsViewModel.swift in Sources */,
 				2C46E95324657DA6001528CA /* LoginViewModel.swift in Sources */,
 				2C46E92D2462FE03001528CA /* Requester.swift in Sources */,
+				2C46E97E246AF5A8001528CA /* HomeViewModel.swift in Sources */,
+				2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */,
+				2C173DA5247982DE000CCF6C /* RestrictTextField.swift in Sources */,
 				2C46E93024630558001528CA /* BaseApi.swift in Sources */,
+				2C171C8D246B0DAD005881F7 /* Cathedra.swift in Sources */,
+				2C171C89246B0D5D005881F7 /* GeneralApi.swift in Sources */,
 				2C46E95B2465B14C001528CA /* BaseViewController.swift in Sources */,
+				2C173DA724799388000CCF6C /* Date.swift in Sources */,
+				2C46E97B246AF25C001528CA /* BaseImageView.swift in Sources */,
 				2C46E96B24681640001528CA /* NSObject.swift in Sources */,
 				2C46E9162462F0E6001528CA /* MoU.xcdatamodeld in Sources */,
+				2C171C8B246B0D96005881F7 /* Faculty.swift in Sources */,
 				2C46E96D246819C0001528CA /* Session.swift in Sources */,
 				2C46E95624657E0C001528CA /* BaseViewModel.swift in Sources */,
 				2C46E92B2462FBE1001528CA /* SessionApi.swift in Sources */,
+				2C171CCC247401A9005881F7 /* FacultyCell.swift in Sources */,
+				2C171C96246B4F6C005881F7 /* FacultyDetailsViewController.swift in Sources */,
+				2C6332302475B95400960611 /* UINavigationBar.swift in Sources */,
 				2C46E96F24681C46001528CA /* NSManagedObject.swift in Sources */,
 				2C46E90C2462F0E6001528CA /* AppDelegate.swift in Sources */,
 				2C46E97324686FD8001528CA /* App.swift in Sources */,
 				2C46E969246813B7001528CA /* DataStack.swift in Sources */,
 				2C46E90E2462F0E6001528CA /* SceneDelegate.swift in Sources */,
+				2C171CD524741050005881F7 /* HomeCellData.swift in Sources */,
+				2C171C85246B0B8A005881F7 /* FacultiesListViewModel.swift in Sources */,
 				2C46E95F2467390B001528CA /* KeyboardViewController.swift in Sources */,
-				2C46E97724698F36001528CA /* MainTabViewController.swift in Sources */,
+				2C171CC22472D67A005881F7 /* FacultyCreateEditViewModel.swift in Sources */,
+				2C46E97724698F36001528CA /* HomeViewController.swift in Sources */,
+				2C171CC02472D64F005881F7 /* FacultyCreateEditViewController.swift in Sources */,
+				2C171CC82473EDE0005881F7 /* CathedraCellData.swift in Sources */,
 				2C46E9292462FBAD001528CA /* Api.swift in Sources */,
+				2C171CC42472F0A3005881F7 /* UIView.swift in Sources */,
+				2C63322E2475856E00960611 /* TemporaryNavBarViewController.swift in Sources */,
+				2C171C98246B597E005881F7 /* FacultyCellData.swift in Sources */,
 				2C46E9752468C537001528CA /* String.swift in Sources */,
+				2C171C83246B0B56005881F7 /* FacultiesListViewController.swift in Sources */,
 				2C46E9272462FAEF001528CA /* ApiError.swift in Sources */,
 				2C46E96524675631001528CA /* User.swift in Sources */,
 			);
@@ -394,7 +585,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				2C46E91A2462F0E8001528CA /* Base */,
-				2C46E948246575AF001528CA /* uk-UA */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

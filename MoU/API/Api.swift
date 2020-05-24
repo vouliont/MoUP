@@ -6,9 +6,11 @@ class Api: NSObject {
     var defaultHeaders = [String: String]()
     
     let session: SessionApi
+    let general: GeneralApi
     
     override init() {
         session = SessionApi(baseUrl: baseUrl)
+        general = GeneralApi(baseUrl: baseUrl)
         
         super.init()
         
@@ -16,13 +18,14 @@ class Api: NSObject {
     }
 
     func reset() {
-        if let token = App.shared.session?.token {
+        if let token = App.shared.session.token {
             defaultHeaders["X-Auth-Token"] = token
         } else {
             defaultHeaders.removeValue(forKey: "X-Auth-Token")
         }
         
         session.defaultHeaders = defaultHeaders
+        general.defaultHeaders = defaultHeaders
     }
     
 }

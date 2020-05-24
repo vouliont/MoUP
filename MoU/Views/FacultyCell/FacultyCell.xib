@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="facultyCell" rowHeight="90" id="wSL-J8-2pG" customClass="FacultyCell" customModule="MoU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wSL-J8-2pG" id="hoC-DB-uxb">
+                <rect key="frame" x="0.0" y="0.0" width="298" height="90"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faculty name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trf-Yp-Aeo">
+                        <rect key="frame" x="16" y="10" width="274" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count of cathedras" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPE-FK-RXd">
+                        <rect key="frame" x="16" y="39.5" width="124.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCF-Qh-ceQ">
+                        <rect key="frame" x="148.5" y="39.5" width="15" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LCF-Qh-ceQ" firstAttribute="centerY" secondItem="HPE-FK-RXd" secondAttribute="centerY" id="Iah-Zc-plh"/>
+                    <constraint firstItem="HPE-FK-RXd" firstAttribute="leading" secondItem="hoC-DB-uxb" secondAttribute="leading" constant="16" id="KhE-Yi-4Xw"/>
+                    <constraint firstItem="HPE-FK-RXd" firstAttribute="top" secondItem="Trf-Yp-Aeo" secondAttribute="bottom" constant="8" id="Mf5-Jz-OJc"/>
+                    <constraint firstItem="Trf-Yp-Aeo" firstAttribute="top" secondItem="hoC-DB-uxb" secondAttribute="top" constant="10" id="NEl-3h-DE6"/>
+                    <constraint firstItem="Trf-Yp-Aeo" firstAttribute="leading" secondItem="hoC-DB-uxb" secondAttribute="leading" constant="16" id="gT6-Pf-n79"/>
+                    <constraint firstAttribute="trailing" secondItem="Trf-Yp-Aeo" secondAttribute="trailing" constant="8" id="grh-K1-MEu"/>
+                    <constraint firstItem="LCF-Qh-ceQ" firstAttribute="leading" secondItem="HPE-FK-RXd" secondAttribute="trailing" constant="8" id="pBB-Ak-pAQ"/>
+                    <constraint firstAttribute="bottom" secondItem="HPE-FK-RXd" secondAttribute="bottom" priority="250" constant="10" id="vxR-oS-QXj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="cathedrasCountLabel" destination="LCF-Qh-ceQ" id="el5-UO-xzE"/>
+                <outlet property="facultyNameLabel" destination="Trf-Yp-Aeo" id="3gY-Lf-wfX"/>
+            </connections>
+            <point key="canvasLocation" x="-16.666666666666668" y="-30.803571428571427"/>
+        </tableViewCell>
+    </objects>
+</document>

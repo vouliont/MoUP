@@ -5,9 +5,12 @@ class App {
     
     let dataStack = DataStack()
     weak var appDelegate: AppDelegate!
+    weak var sceneDelegate: SceneDelegate!
     
     var api: Api!
-    var session: Session?
+    var session: Session {
+        return Session.get() ?? Session.create()
+    }
     
     private init() {}
     
@@ -17,11 +20,33 @@ class App {
         shared.appDelegate = delegate
         
         shared.api = Api()
-        shared.session = Session.get() ?? Session.create()
     }
     
     func tokenDidUpdate() {
         api.reset()
+    }
+    
+    func logUserOut() {
+        DispatchQueue.main.async {
+            self.sceneDelegate.loadLoadingController()
+        }
+        
+        dataStack.performInNewBackgroundContext { context in
+            let session = Session.get(context: context)!
+            
+            context.delete(session.user!)
+            session.token = nil
+            
+            do {
+                try context.save()
+                DispatchQueue.main.async {
+                    self.sceneDelegate.loadController()
+                }
+            } catch {
+                print(error)
+            }
+        }
+        
     }
     
 }

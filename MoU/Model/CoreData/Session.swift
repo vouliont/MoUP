@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 
 @objc(Session)
-class Session: NSManagedObject {
+public class Session: NSManagedObject {
     
     static func get(context: NSManagedObjectContext = dataStack.mainContext) -> Session? {
         let fetchRequest: NSFetchRequest<Session> = Session.fetchRequest()

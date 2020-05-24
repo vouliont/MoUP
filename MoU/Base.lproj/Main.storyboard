@@ -14,7 +14,16 @@
                     <view key="view" contentMode="scaleToFill" id="JGx-9v-xYc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="nL9-zB-xZp">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nL9-zB-xZp" firstAttribute="centerX" secondItem="JGx-9v-xYc" secondAttribute="centerX" id="YNS-Qq-xMi"/>
+                            <constraint firstItem="nL9-zB-xZp" firstAttribute="centerY" secondItem="JGx-9v-xYc" secondAttribute="centerY" id="b3v-ML-gRi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pan-rh-QyF"/>
                     </view>
                 </viewController>
@@ -28,7 +37,16 @@
                 <viewControllerPlaceholder storyboardIdentifier="loginViewController" storyboardName="Login" referencedIdentifier="loginViewController" id="B59-dQ-D77" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YZm-fs-uMm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="216" y="-7"/>
+            <point key="canvasLocation" x="49" y="-31"/>
+        </scene>
+        <!--homeViewNavigationController-->
+        <scene sceneID="Moj-OW-12R">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="homeViewController" storyboardName="Home" referencedIdentifier="homeViewNavigationController" id="3ua-0x-Xiq" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xvv-sY-Vci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="48" y="3"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

@@ -5,7 +5,6 @@ import CoreData
 
 class LoginViewModel: BaseViewModel {
     
-    private let concurrentQueue = ConcurrentDispatchQueueScheduler(qos: .background)
     private lazy var backgroundContext : NSManagedObjectContext = {
         return dataStack.newBackgroundContext()
     }()
@@ -44,8 +43,8 @@ class LoginViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         userDataLoadedSubject
-            .map { false }
-            .bind(to: loadingSubject)
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: sceneDelegate.loadController)
             .disposed(by: disposeBag)
 
         let logInButtonEnable = Observable.combineLatest(
@@ -65,7 +64,7 @@ class LoginViewModel: BaseViewModel {
     
 }
 
-// MARK: - INPUT/OUTPUT
+// MARK: - INPUTS/OUTPUTS
 extension LoginViewModel {
     struct Input {
         let loginTextFieldTextChanged: ControlProperty<String?>
@@ -92,10 +91,12 @@ extension LoginViewModel {
     }
     
     private func logIn() {
-        let login = loginSubject.value
+        let isEmail = loginSubject.value.contains("@")
+        let login: String? = isEmail ? nil : loginSubject.value
+        let email: String? = isEmail ? loginSubject.value : nil
         let password = passwordSubject.value
         
-        App.shared.api.session.logIn(login: login, password: password)
+        App.shared.api.session.logIn(login: login, email: email, password: password)
             .asSingle()
             .flatMapCompletable(persistToken)
             .subscribeOn(concurrentQueue)
@@ -143,6 +144,10 @@ extension LoginViewModel {
     private func persistUser(_ user: User) -> Completable {
         return Completable.create { completable in
             self.backgroundContext.perform {
+                if let photoPath = user.photoPath, let url = URL(string: photoPath) {
+                    user.photo = self.loadUserPhoto(from: url)
+                }
+                
                 self.backgroundContext.insert(user)
                 
                 let session = Session.get(context: self.backgroundContext)!
@@ -159,6 +164,10 @@ extension LoginViewModel {
             
             return Disposables.create()
         }
+    }
+    
+    private func loadUserPhoto(from url: URL) -> Data? {
+        return try? Data(contentsOf: url)
     }
     
 }

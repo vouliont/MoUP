@@ -1,14 +1,18 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxViewController
 
 class LoginViewController: KeyboardViewController {
 
     @IBOutlet var loginTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var logInButton: UIButton!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     private let viewModel = LoginViewModel()
+    
+    private var lastActiveTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +29,38 @@ class LoginViewController: KeyboardViewController {
             .drive(logInButton.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        // todo: userDataLoaded bind
+        viewModel.loading
+            .map { !$0 }
+            .drive(activityIndicator.rx.isHidden)
+            .disposed(by: disposeBag)
+        viewModel.loading
+            .map { !$0 }
+            .drive(loginTextField.rx.isUserInteractionEnabled)
+            .disposed(by: disposeBag)
+        viewModel.loading
+            .map { !$0 }
+            .drive(passwordTextField.rx.isUserInteractionEnabled)
+            .disposed(by: disposeBag)
+        
+        self.rx.viewDidAppear
+            .bind(onNext: { _ in
+                self.loginTextField.becomeFirstResponder()
+            })
+            .disposed(by: disposeBag)
         
         output.errorHasOccured
             .drive(onNext: showError)
             .disposed(by: disposeBag)
         
+        logInButton.rx.controlEvent(.touchUpInside)
+            .bind(onNext: { self.lastActiveTextField?.resignFirstResponder() })
+            .disposed(by: disposeBag)
+        
         let textFields: [UITextField] = [loginTextField, passwordTextField]
         textFields.forEach { textField in
+            textField.rx.controlEvent(.editingDidBegin)
+                .bind(onNext: { self.lastActiveTextField = textField })
+                .disposed(by: disposeBag)
             textField.rx.controlEvent(.editingDidEnd)
                 .bind(onNext: { textField.layoutIfNeeded() })
                 .disposed(by: disposeBag)

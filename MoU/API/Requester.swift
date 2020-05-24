@@ -10,6 +10,8 @@ class Requester<T> {
     enum HttpMethod: String {
         case post = "POST"
         case get = "GET"
+        case delete = "DELETE"
+        case put = "PUT"
     }
     
     private var successHandler: SuccessHandler?
@@ -18,7 +20,7 @@ class Requester<T> {
     
     struct JsonResponse {
         let code: Int
-        let json: [String: Any]
+        let json: Any?
         let error: Error?
     }
     
@@ -29,7 +31,15 @@ class Requester<T> {
         headers: [String: String] = [:],
         completion: @escaping (_ response: JsonResponse) -> (T?, ApiError?))
     {
-        let url = URL(string: urlString)!
+        var urlComponents = URLComponents(string: urlString)!
+        if method == .get {
+            urlComponents.queryItems = params?.map { key, value in
+                let stringValue = "\(value)"
+                return URLQueryItem(name: key, value: stringValue)
+            }
+        }
+        
+        let url = urlComponents.url!
         var urlRequest = URLRequest(url: url)
         
         urlRequest.httpMethod = method.rawValue
@@ -41,21 +51,22 @@ class Requester<T> {
             urlRequest.setValue(value, forHTTPHeaderField: key)
         }
         
-        if let params = params {
+        if let params = params, method != .get {
             urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: params)
         }
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             
             let code = (response as? HTTPURLResponse)?.statusCode ?? 0
-            let json: [String: Any] = {
+            let json: Any? = {
                 if let data = data {
-                    return (try? JSONSerialization.jsonObject(with: data) as? [String: Any]) ?? [:]
+                    return try? JSONSerialization.jsonObject(with: data)
                 }
-                return [:]
+                return nil
             }()
             
             let jsonResponse = JsonResponse(code: code, json: json, error: error)
+            guard self.handledGeneralError(within: jsonResponse) else { return }
             let (result, apiError) = completion(jsonResponse)
             
             self.resolve(result: result, error: apiError)
@@ -91,6 +102,15 @@ class Requester<T> {
     private func addDefaultHeaders(to headers: inout [String: String]) {
         headers["Accept"] = "application/json"
         headers["Content-Type"] = "application/json"
+    }
+    
+    private func handledGeneralError(within response: JsonResponse) -> Bool {
+        if response.code == 403 {
+            App.shared.logUserOut()
+            return false
+        }
+        
+        return true
     }
     
     func asSingle() -> Single<T> {

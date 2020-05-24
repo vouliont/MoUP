@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="cathedraCell" rowHeight="104" id="VXu-At-nzP" customClass="CathedraCell" customModule="MoU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VXu-At-nzP" id="h4z-YS-vDy">
+                <rect key="frame" x="0.0" y="0.0" width="351" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cathedra name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9A-oZ-2Nm">
+                        <rect key="frame" x="16" y="10" width="327" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count of groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaX-TL-CZC">
+                        <rect key="frame" x="16" y="40" width="105" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7T-qg-Ptv">
+                        <rect key="frame" x="129" y="40" width="15" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="V9A-oZ-2Nm" secondAttribute="trailing" constant="8" id="5DB-je-ito"/>
+                    <constraint firstItem="V9A-oZ-2Nm" firstAttribute="top" secondItem="h4z-YS-vDy" secondAttribute="top" constant="10" id="Glg-VX-eNd"/>
+                    <constraint firstItem="E7T-qg-Ptv" firstAttribute="leading" secondItem="yaX-TL-CZC" secondAttribute="trailing" constant="8" id="HWD-c9-9Zn"/>
+                    <constraint firstItem="E7T-qg-Ptv" firstAttribute="centerY" secondItem="yaX-TL-CZC" secondAttribute="centerY" id="JbC-Vr-6TS"/>
+                    <constraint firstItem="V9A-oZ-2Nm" firstAttribute="leading" secondItem="h4z-YS-vDy" secondAttribute="leading" constant="16" id="Njs-Ad-TPs"/>
+                    <constraint firstAttribute="bottom" secondItem="yaX-TL-CZC" secondAttribute="bottom" priority="250" constant="10" id="kbf-Mr-J5L"/>
+                    <constraint firstItem="yaX-TL-CZC" firstAttribute="top" secondItem="V9A-oZ-2Nm" secondAttribute="bottom" constant="8" id="tZE-li-4Gr"/>
+                    <constraint firstItem="yaX-TL-CZC" firstAttribute="leading" secondItem="h4z-YS-vDy" secondAttribute="leading" constant="16" id="ucu-qo-wXL"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="cathedraNameLabel" destination="V9A-oZ-2Nm" id="XQf-va-4bi"/>
+                <outlet property="groupsCountLabel" destination="E7T-qg-Ptv" id="QXu-fV-u8B"/>
+            </connections>
+            <point key="canvasLocation" x="156.52173913043478" y="121.875"/>
+        </tableViewCell>
+    </objects>
+</document>
