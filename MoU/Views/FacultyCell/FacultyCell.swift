@@ -2,7 +2,7 @@ import UIKit
 
 class FacultyCell: UITableViewCell {
     
-    static let identifier = "facultyCell"
+    static let identifier = CellType.facultyCell.rawValue
     
     @IBOutlet var facultyNameLabel: UILabel!
     @IBOutlet var cathedrasCountLabel: UILabel!

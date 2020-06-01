@@ -3,9 +3,11 @@ import Foundation
 class BaseApi: NSObject {
     
     var fullUrl: (String) -> String
-    var errorCodes: [Int: String] {
+    var requestErrors: [String: [Int: String]] {
         return [
-            403: "NO_INTERNET"
+            RequestList.all.name: [
+                403: "NO_INTERNET"
+            ]
         ]
     }
     var defaultHeaders: [String: String] = [:]
@@ -16,11 +18,26 @@ class BaseApi: NSObject {
         }
     }
     
-    final func errorForCode(_ code: Int) -> ApiError {
-        if let errorMessage = errorCodes[code] {
+    final func errorForCode(_ code: Int, of request: Request) -> ApiError {
+        if let errorCodes = requestErrors[request.name],
+            let errorMessage = errorCodes[code] {
             return ApiError(code: code, message: errorMessage)
         }
         return ApiError.general
     }
     
+}
+
+extension BaseApi {
+    enum RequestList: String, Request {
+        case all
+        
+        var name: String {
+            return self.rawValue
+        }
+    }
+}
+
+protocol Request {
+    var name: String { get }
 }

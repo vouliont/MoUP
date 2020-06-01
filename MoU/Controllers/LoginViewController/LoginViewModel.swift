@@ -57,8 +57,8 @@ class LoginViewModel: BaseViewModel {
             logInButtonEnable: logInButtonEnable.asDriver(onErrorJustReturn: false),
             userDataLoaded: userDataLoadedSubject.asDriver(onErrorJustReturn: ()),
             errorHasOccured: errorSubject
-                .map { ($0 as? ApiError)?.localizedDescription ?? ApiError.general.localizedDescription }
-                .asDriver(onErrorJustReturn: ApiError.general.localizedDescription)
+                .map { ($0 as? ApiError)?.localizedMessage ?? ApiError.general.localizedMessage }
+                .asDriver(onErrorJustReturn: ApiError.general.localizedMessage)
         )
     }
     

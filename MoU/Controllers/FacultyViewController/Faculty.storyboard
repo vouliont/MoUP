@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="32.8125"/>
         </scene>
-        <!--Faculty Details View Controller-->
+        <!--Faculty Details-->
         <scene sceneID="K6C-mz-pEI">
             <objects>
-                <viewController id="lUv-fG-e1t" customClass="FacultyDetailsViewController" customModule="MoU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Faculty Details" id="lUv-fG-e1t" customClass="FacultyDetailsViewController" customModule="MoU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwD-UV-wFU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,9 +105,50 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJV-i2-L9z">
+                                <rect key="frame" x="0.0" y="142.5" width="414" height="40"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="4se-e8-mtN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cathedras List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRF-Dz-TOz">
+                                            <rect key="frame" x="16" y="10.5" width="108" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBZ-ZI-3hb">
+                                            <rect key="frame" x="321" y="4" width="85" height="32"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="Create New">
+                                                <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="Upe-kQ-eCy" kind="presentation" identifier="createCathedraSegue" id="Fs6-wc-UJo"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="SRF-Dz-TOz" firstAttribute="centerY" secondItem="4se-e8-mtN" secondAttribute="centerY" id="4fR-AN-ScY"/>
+                                        <constraint firstItem="SRF-Dz-TOz" firstAttribute="leading" secondItem="4se-e8-mtN" secondAttribute="leading" constant="16" id="DnA-UV-Jvx"/>
+                                        <constraint firstAttribute="trailing" secondItem="EBZ-ZI-3hb" secondAttribute="trailing" constant="8" id="Rre-ea-ZaR"/>
+                                        <constraint firstItem="SRF-Dz-TOz" firstAttribute="centerY" secondItem="4se-e8-mtN" secondAttribute="centerY" id="hKX-wQ-S5U"/>
+                                        <constraint firstItem="EBZ-ZI-3hb" firstAttribute="centerY" secondItem="4se-e8-mtN" secondAttribute="centerY" id="jGi-sG-mVK"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="El8-NV-pge"/>
+                                </constraints>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="zJV-i2-L9z" firstAttribute="leading" secondItem="S94-af-sgt" secondAttribute="leading" id="IOs-rd-nBx"/>
+                            <constraint firstItem="zJV-i2-L9z" firstAttribute="top" secondItem="Bmf-x1-YWg" secondAttribute="bottom" id="Jcr-Lc-14K"/>
                             <constraint firstItem="Bmf-x1-YWg" firstAttribute="leading" secondItem="S94-af-sgt" secondAttribute="leading" id="Nzq-gD-Yt4"/>
                             <constraint firstItem="jZQ-Fd-IzD" firstAttribute="leading" secondItem="S94-af-sgt" secondAttribute="leading" id="PQm-Dq-NYf"/>
                             <constraint firstItem="jZQ-Fd-IzD" firstAttribute="top" secondItem="Bmf-x1-YWg" secondAttribute="bottom" id="SS3-js-99C"/>
@@ -115,42 +156,23 @@
                             <constraint firstItem="Bmf-x1-YWg" firstAttribute="top" secondItem="S94-af-sgt" secondAttribute="top" id="iOq-mp-b6d"/>
                             <constraint firstAttribute="bottom" secondItem="jZQ-Fd-IzD" secondAttribute="bottom" id="kNE-a0-h6V"/>
                             <constraint firstItem="jZQ-Fd-IzD" firstAttribute="trailing" secondItem="S94-af-sgt" secondAttribute="trailing" id="smp-NS-fPh"/>
+                            <constraint firstItem="S94-af-sgt" firstAttribute="trailing" secondItem="zJV-i2-L9z" secondAttribute="trailing" id="tAC-C4-0Av"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S94-af-sgt"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1ie-0P-95q"/>
                     <connections>
                         <outlet property="additionalInfoLabel" destination="Fu5-fR-rYr" id="Cpm-Xq-fsO"/>
                         <outlet property="cathedrasTableView" destination="jZQ-Fd-IzD" id="keL-Yu-1Oa"/>
+                        <outlet property="createNewCathedraButton" destination="EBZ-ZI-3hb" id="QOX-b7-2nC"/>
                         <outlet property="facultyNameLabel" destination="ONC-k2-GyQ" id="OLO-Wc-dTk"/>
                         <outlet property="foundedDateLabel" destination="c8N-kN-2Vz" id="wyc-fa-PrM"/>
                         <outlet property="linkButton" destination="ZX5-qr-HpS" id="iWw-9H-XnI"/>
-                        <outlet property="tableHeaderView" destination="062-iq-YC8" id="mt9-Nj-cW6"/>
+                        <outlet property="tableTitleViewHeight" destination="El8-NV-pge" id="GBU-RZ-oO9"/>
                         <segue destination="ywr-il-kUl" kind="presentation" identifier="editFacultySegue" id="Hxa-Pf-7TS"/>
+                        <segue destination="WKF-at-YWP" kind="show" identifier="cathedraDetailsSegue" id="dCE-a0-T8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVv-J6-OCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" id="062-iq-YC8">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KPu-JQ-Uu7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="26"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cathedras List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLz-wj-HBJ">
-                                <rect key="frame" x="16" y="4" width="102.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="NLz-wj-HBJ" firstAttribute="centerY" secondItem="KPu-JQ-Uu7" secondAttribute="centerY" id="hRB-FH-813"/>
-                            <constraint firstItem="NLz-wj-HBJ" firstAttribute="leading" secondItem="KPu-JQ-Uu7" secondAttribute="leading" constant="16" id="r2I-w5-Yhg"/>
-                        </constraints>
-                    </view>
-                    <blurEffect style="regular"/>
-                </visualEffectView>
             </objects>
             <point key="canvasLocation" x="1002.8985507246377" y="302.00892857142856"/>
         </scene>
@@ -374,6 +396,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haC-D0-Lsg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1771.0144927536232" y="-384.375"/>
+        </scene>
+        <!--cathedraDetailsViewController-->
+        <scene sceneID="aWv-2x-skc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cathedra" referencedIdentifier="cathedraDetailsViewController" id="WKF-at-YWP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JHf-pt-zP4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B4h-ha-cUI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1771" y="302"/>
+        </scene>
+        <!--cathedraCreateEditNavController-->
+        <scene sceneID="pz2-AK-BQP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Cathedra" referencedIdentifier="cathedraCreateEditNavController" id="Upe-kQ-eCy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XsV-0X-P5C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770" y="229"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

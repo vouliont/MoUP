@@ -9,7 +9,7 @@ class FacultiesListViewModel: BaseViewModel {
     private let currentPageSubject = BehaviorRelay<Int>(value: 0)
     private let totalPagesSubject = BehaviorRelay<Int>(value: 1)
     private let facultyCellsDataSubject = BehaviorRelay<[FacultyCellData]>(value: [
-        FacultyCellData(faculty: nil, cellIdentifier: .loadingCell)
+        FacultyCellData(item: nil, cellType: .loadingCell)
     ])
     private let loadingFacultiesSubject = BehaviorRelay<Bool>(value: false)
     private let needInitializeFacultiesListSubject = BehaviorRelay<Bool>(value: false)
@@ -61,7 +61,7 @@ class FacultiesListViewModel: BaseViewModel {
         input.viewDidAppear
             .withLatestFrom(needInitializeFacultiesListSubject) { $1 }
             .filter { $0 }
-            .map { _ in [FacultyCellData(faculty: nil, cellIdentifier: .loadingCell)] }
+            .map { _ in [FacultyCellData(item: nil, cellType: .loadingCell)] }
             .bind(to: facultyCellsDataSubject)
             .disposed(by: disposeBag)
         
@@ -76,7 +76,7 @@ class FacultiesListViewModel: BaseViewModel {
         return Output(
             facultyCellsData: facultyCellsDataSubject.asDriver(),
             facultySelected: input.cellDidSelect
-                .map { self.facultyCellsDataSubject.value[$0.row].faculty }
+                .map { self.facultyCellsDataSubject.value[$0.row].item }
                 .filter { $0 != nil }
                 .map { $0! }
                 .asDriver(onErrorDriveWith: Driver<Faculty>.empty())
@@ -101,6 +101,7 @@ extension FacultiesListViewModel {
     struct Segue {
         static let showFaculty = "showFacultySegue"
         static let createFaculty = "createFacultySegue"
+        static let createCathedra = "createCathedraSegue"
     }
 }
 
@@ -117,15 +118,15 @@ extension FacultiesListViewModel {
                     self.totalPagesSubject.accept(pagination.totalPages)
                     
                     var facultyCellsData = self.facultyCellsDataSubject.value
-                    if facultyCellsData.last?.cellIdentifier == FacultyCellData.CellType.loadingCell {
+                    if facultyCellsData.last?.cellType == CellType.loadingCell {
                         facultyCellsData.removeLast()
                     }
                     for faculty in faculties {
-                        let facultyCellData = FacultyCellData(faculty: faculty, cellIdentifier: .facultyCell)
+                        let facultyCellData = FacultyCellData(item: faculty, cellType: .facultyCell)
                         facultyCellsData.append(facultyCellData)
                     }
                     if pagination.currentPage < pagination.totalPages {
-                        let facultyCellData = FacultyCellData(faculty: nil, cellIdentifier: .loadingCell)
+                        let facultyCellData = FacultyCellData(item: nil, cellType: .loadingCell)
                         facultyCellsData.append(facultyCellData)
                     }
                     
@@ -140,7 +141,7 @@ extension FacultiesListViewModel {
         currentPageSubject.accept(0)
         totalPagesSubject.accept(1)
         facultyCellsDataSubject.accept([
-            FacultyCellData(faculty: nil, cellIdentifier: .loadingCell)
+            FacultyCellData(item: nil, cellType: .loadingCell)
         ])
     }
     

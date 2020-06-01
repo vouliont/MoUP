@@ -30,6 +30,18 @@
 		2C171CD524741050005881F7 /* HomeCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C171CD424741050005881F7 /* HomeCellData.swift */; };
 		2C173DA5247982DE000CCF6C /* RestrictTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C173DA4247982DE000CCF6C /* RestrictTextField.swift */; };
 		2C173DA724799388000CCF6C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C173DA624799387000CCF6C /* Date.swift */; };
+		2C1A2D6224812FE400D3501F /* CathedraDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D6124812FE400D3501F /* CathedraDetailViewController.swift */; };
+		2C1A2D64248130A800D3501F /* Cathedra.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A2D63248130A800D3501F /* Cathedra.storyboard */; };
+		2C1A2D66248132A300D3501F /* CathedraDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D65248132A300D3501F /* CathedraDetailsViewModel.swift */; };
+		2C1A2D6824814E2800D3501F /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D6724814E2800D3501F /* UITableView.swift */; };
+		2C1A2D6A248158A700D3501F /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D69248158A700D3501F /* CellType.swift */; };
+		2C1A2D6C2481590000D3501F /* LoadingCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D6B2481590000D3501F /* LoadingCellProtocol.swift */; };
+		2C1A2D6E24815CA500D3501F /* GroupCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D6D24815CA500D3501F /* GroupCellData.swift */; };
+		2C1A2D7024815CDB00D3501F /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D6F24815CDB00D3501F /* Group.swift */; };
+		2C1A2D752484E71900D3501F /* CathedraCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D742484E71900D3501F /* CathedraCreateEditViewController.swift */; };
+		2C1A2D772484E74000D3501F /* CathedraCreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D762484E74000D3501F /* CathedraCreateEditViewModel.swift */; };
+		2C1A2D7A2484FD9700D3501F /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D792484FD9700D3501F /* GroupCell.swift */; };
+		2C1A2D7C2484FDD800D3501F /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A2D7B2484FDD800D3501F /* GroupCell.xib */; };
 		2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25C2475616900D4C0A2 /* UIResponder.swift */; };
 		2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */; };
 		2C46E90C2462F0E6001528CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E90B2462F0E6001528CA /* AppDelegate.swift */; };
@@ -104,6 +116,18 @@
 		2C171CD424741050005881F7 /* HomeCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellData.swift; sourceTree = "<group>"; };
 		2C173DA4247982DE000CCF6C /* RestrictTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictTextField.swift; sourceTree = "<group>"; };
 		2C173DA624799387000CCF6C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2C1A2D6124812FE400D3501F /* CathedraDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraDetailViewController.swift; sourceTree = "<group>"; };
+		2C1A2D63248130A800D3501F /* Cathedra.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cathedra.storyboard; sourceTree = "<group>"; };
+		2C1A2D65248132A300D3501F /* CathedraDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraDetailsViewModel.swift; sourceTree = "<group>"; };
+		2C1A2D6724814E2800D3501F /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		2C1A2D69248158A700D3501F /* CellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellType.swift; sourceTree = "<group>"; };
+		2C1A2D6B2481590000D3501F /* LoadingCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCellProtocol.swift; sourceTree = "<group>"; };
+		2C1A2D6D24815CA500D3501F /* GroupCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCellData.swift; sourceTree = "<group>"; };
+		2C1A2D6F24815CDB00D3501F /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		2C1A2D742484E71900D3501F /* CathedraCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraCreateEditViewController.swift; sourceTree = "<group>"; };
+		2C1A2D762484E74000D3501F /* CathedraCreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraCreateEditViewModel.swift; sourceTree = "<group>"; };
+		2C1A2D792484FD9700D3501F /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		2C1A2D7B2484FDD800D3501F /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		2C39E25C2475616900D4C0A2 /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
 		2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		2C46E9082462F0E6001528CA /* MoU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +211,7 @@
 				2C171CCE24740AE7005881F7 /* Base */,
 				2C171CCD247401D7005881F7 /* FacultyCell */,
 				2C171CCF24740BE7005881F7 /* CathedraCell */,
+				2C1A2D782484FD8000D3501F /* GroupCell */,
 				2C39E25E2475672E00D4C0A2 /* LoadingCell */,
 				2C173DA4247982DE000CCF6C /* RestrictTextField.swift */,
 			);
@@ -196,9 +221,11 @@
 		2C171CC62473EDCF005881F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C171CD424741050005881F7 /* HomeCellData.swift */,
+				2C1A2D6B2481590000D3501F /* LoadingCellProtocol.swift */,
 				2C171C97246B597E005881F7 /* FacultyCellData.swift */,
 				2C171CC72473EDE0005881F7 /* CathedraCellData.swift */,
-				2C171CD424741050005881F7 /* HomeCellData.swift */,
+				2C1A2D6D24815CA500D3501F /* GroupCellData.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -230,6 +257,27 @@
 			path = CathedraCell;
 			sourceTree = "<group>";
 		};
+		2C1A2D6024812FC500D3501F /* CathedraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2C1A2D6124812FE400D3501F /* CathedraDetailViewController.swift */,
+				2C1A2D65248132A300D3501F /* CathedraDetailsViewModel.swift */,
+				2C1A2D742484E71900D3501F /* CathedraCreateEditViewController.swift */,
+				2C1A2D762484E74000D3501F /* CathedraCreateEditViewModel.swift */,
+				2C1A2D63248130A800D3501F /* Cathedra.storyboard */,
+			);
+			path = CathedraViewController;
+			sourceTree = "<group>";
+		};
+		2C1A2D782484FD8000D3501F /* GroupCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C1A2D792484FD9700D3501F /* GroupCell.swift */,
+				2C1A2D7B2484FDD800D3501F /* GroupCell.xib */,
+			);
+			path = GroupCell;
+			sourceTree = "<group>";
+		};
 		2C39E25E2475672E00D4C0A2 /* LoadingCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +294,7 @@
 				2C46E95124657D49001528CA /* LoginViewController */,
 				2C46E97C246AF593001528CA /* HomeViewController */,
 				2C171C81246B0AEB005881F7 /* FacultyViewController */,
+				2C1A2D6024812FC500D3501F /* CathedraViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -300,6 +349,7 @@
 				2C39E25C2475616900D4C0A2 /* UIResponder.swift */,
 				2C63322F2475B95400960611 /* UINavigationBar.swift */,
 				2C173DA624799387000CCF6C /* Date.swift */,
+				2C1A2D6724814E2800D3501F /* UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -353,7 +403,9 @@
 				2C46E968246813B7001528CA /* DataStack.swift */,
 				2C171C8A246B0D96005881F7 /* Faculty.swift */,
 				2C171C8C246B0DAD005881F7 /* Cathedra.swift */,
+				2C1A2D6F24815CDB00D3501F /* Group.swift */,
 				2C171C93246B1EF7005881F7 /* Pagination.swift */,
+				2C1A2D69248158A700D3501F /* CellType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -464,9 +516,11 @@
 				2C171C92246B10BD005881F7 /* LoadingCell.xib in Resources */,
 				2C171CCA2473FAF1005881F7 /* FacultyCell.xib in Resources */,
 				2C46E980246AF624001528CA /* Home.storyboard in Resources */,
+				2C1A2D7C2484FDD800D3501F /* GroupCell.xib in Resources */,
 				2C171CD124740BFB005881F7 /* CathedraCell.xib in Resources */,
 				2C46E9712468236C001528CA /* Login.storyboard in Resources */,
 				2C46E9132462F0E6001528CA /* Main.storyboard in Resources */,
+				2C1A2D64248130A800D3501F /* Cathedra.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,26 +576,35 @@
 				2C171C94246B1EF7005881F7 /* Pagination.swift in Sources */,
 				2C171CD324740C15005881F7 /* CathedraCell.swift in Sources */,
 				2C46E979246991A3001528CA /* BaseNavigationController.swift in Sources */,
+				2C1A2D66248132A300D3501F /* CathedraDetailsViewModel.swift in Sources */,
 				2C46E96124675014001528CA /* BaseButton.swift in Sources */,
 				2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */,
 				2C46E9102462F0E6001528CA /* LoginViewController.swift in Sources */,
 				2C171C9A246B6027005881F7 /* FacultyDetailsViewModel.swift in Sources */,
+				2C1A2D6C2481590000D3501F /* LoadingCellProtocol.swift in Sources */,
+				2C1A2D7024815CDB00D3501F /* Group.swift in Sources */,
 				2C46E95324657DA6001528CA /* LoginViewModel.swift in Sources */,
 				2C46E92D2462FE03001528CA /* Requester.swift in Sources */,
+				2C1A2D6A248158A700D3501F /* CellType.swift in Sources */,
 				2C46E97E246AF5A8001528CA /* HomeViewModel.swift in Sources */,
+				2C1A2D752484E71900D3501F /* CathedraCreateEditViewController.swift in Sources */,
 				2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */,
 				2C173DA5247982DE000CCF6C /* RestrictTextField.swift in Sources */,
 				2C46E93024630558001528CA /* BaseApi.swift in Sources */,
+				2C1A2D772484E74000D3501F /* CathedraCreateEditViewModel.swift in Sources */,
 				2C171C8D246B0DAD005881F7 /* Cathedra.swift in Sources */,
 				2C171C89246B0D5D005881F7 /* GeneralApi.swift in Sources */,
+				2C1A2D7A2484FD9700D3501F /* GroupCell.swift in Sources */,
 				2C46E95B2465B14C001528CA /* BaseViewController.swift in Sources */,
 				2C173DA724799388000CCF6C /* Date.swift in Sources */,
 				2C46E97B246AF25C001528CA /* BaseImageView.swift in Sources */,
 				2C46E96B24681640001528CA /* NSObject.swift in Sources */,
 				2C46E9162462F0E6001528CA /* MoU.xcdatamodeld in Sources */,
+				2C1A2D6E24815CA500D3501F /* GroupCellData.swift in Sources */,
 				2C171C8B246B0D96005881F7 /* Faculty.swift in Sources */,
 				2C46E96D246819C0001528CA /* Session.swift in Sources */,
 				2C46E95624657E0C001528CA /* BaseViewModel.swift in Sources */,
+				2C1A2D6224812FE400D3501F /* CathedraDetailViewController.swift in Sources */,
 				2C46E92B2462FBE1001528CA /* SessionApi.swift in Sources */,
 				2C171CCC247401A9005881F7 /* FacultyCell.swift in Sources */,
 				2C171C96246B4F6C005881F7 /* FacultyDetailsViewController.swift in Sources */,
@@ -554,6 +617,7 @@
 				2C171CD524741050005881F7 /* HomeCellData.swift in Sources */,
 				2C171C85246B0B8A005881F7 /* FacultiesListViewModel.swift in Sources */,
 				2C46E95F2467390B001528CA /* KeyboardViewController.swift in Sources */,
+				2C1A2D6824814E2800D3501F /* UITableView.swift in Sources */,
 				2C171CC22472D67A005881F7 /* FacultyCreateEditViewModel.swift in Sources */,
 				2C46E97724698F36001528CA /* HomeViewController.swift in Sources */,
 				2C171CC02472D64F005881F7 /* FacultyCreateEditViewController.swift in Sources */,

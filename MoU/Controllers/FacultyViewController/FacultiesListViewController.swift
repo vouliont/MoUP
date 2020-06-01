@@ -65,11 +65,18 @@ class FacultiesListViewController: TemporaryNavBarViewController {
         
         output.facultyCellsData
             .drive(tableView.rx.items) { tableView, row, facultyCellData in
-                if facultyCellData.cellIdentifier == .loadingCell {
+                if facultyCellData.cellType == .loadingCell {
                     self.viewModel.loadMoreFacultySubject.onNext(())
                 }
-                return self.cell(for: facultyCellData)
+                let cell = self.cell(for: facultyCellData)
+                cell.separatorInset.left = facultyCellData.cellType == .loadingCell ? UIScreen.main.bounds.width : 16
+                return cell
             }.disposed(by: disposeBag)
+        
+        output.facultyCellsData
+            .map { $0.isEmpty ? "NO_FACULTIES".localized : nil }
+            .drive(onNext: tableView.setEmptyTitle(_:))
+            .disposed(by: disposeBag)
         
         output.facultySelected
             .drive(onNext: presentFaculty)
@@ -84,20 +91,23 @@ extension FacultiesListViewController {
     }
     
     private func setupTableView() {
-        tableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: "loadingCell")
+        tableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
         tableView.register(UINib(nibName: "FacultyCell", bundle: nil), forCellReuseIdentifier: FacultyCell.identifier)
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     private func cell(for data: FacultyCellData) -> UITableViewCell {
-        switch data.cellIdentifier {
+        switch data.cellType {
         case .facultyCell:
-            let facultyCell = tableView.dequeueReusableCell(withIdentifier: data.cellIdentifier.rawValue) as! FacultyCell
-            facultyCell.reset(with: data.faculty!)
+            let facultyCell = tableView.dequeueReusableCell(withIdentifier: data.cellType.rawValue) as! FacultyCell
+            facultyCell.reset(with: data.item!)
             return facultyCell
         case .loadingCell:
-            let loadingCell = tableView.dequeueReusableCell(withIdentifier: data.cellIdentifier.rawValue) as! LoadingCell
+            let loadingCell = tableView.dequeueReusableCell(withIdentifier: data.cellType.rawValue) as! LoadingCell
             loadingCell.activityIndicator.startAnimating()
             return loadingCell
+        default:
+            return UITableViewCell()
         }
     }
     

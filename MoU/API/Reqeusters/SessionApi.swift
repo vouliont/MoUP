@@ -3,11 +3,13 @@ import CoreData
 
 class SessionApi: BaseApi {
     
-    override var errorCodes: [Int : String] {
-        return super.errorCodes.merging([
-            400: "SESSION_WAS_NOT_INITIATED",
-            404: "USER_NOT_FOUND"
-        ]) { source1, source2 in source2 }
+    override var requestErrors: [String : [Int : String]] {
+        return [
+            RequestList.logIn.name: [
+                400: "SESSION_WAS_NOT_INITIATED",
+                404: "USER_NOT_FOUND"
+            ]
+        ]
     }
     
     func logIn(login: String? = nil, email: String? = nil, password: String) -> Requester<String> {
@@ -26,7 +28,7 @@ class SessionApi: BaseApi {
                 return (token, nil)
             }
             
-            return (nil, self.errorForCode(response.code))
+            return (nil, self.errorForCode(response.code, of: RequestList.logIn))
         }
     }
     
@@ -35,7 +37,7 @@ class SessionApi: BaseApi {
             if response.code == 204 {
                 return ((), nil)
             }
-            return (nil, self.errorForCode(response.code))
+            return (nil, self.errorForCode(response.code, of: RequestList.logOut))
         }
     }
     
@@ -46,8 +48,20 @@ class SessionApi: BaseApi {
                 return (user, nil)
             }
             
-            return (nil, self.errorForCode(response.code))
+            return (nil, self.errorForCode(response.code, of: RequestList.getUserData))
         }
     }
     
+}
+
+extension SessionApi {
+    enum RequestList: String, Request {
+        case logIn
+        case logOut
+        case getUserData
+        
+        var name: String {
+            return self.rawValue
+        }
+    }
 }

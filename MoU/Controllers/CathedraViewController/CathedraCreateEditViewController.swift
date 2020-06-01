@@ -1,15 +1,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import RxViewController
 
-class FacultyCreateEditViewController: BaseTableViewController {
+class CathedraCreateEditViewController: BaseTableViewController {
     
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var cellsNameLabels: [UILabel]!
     @IBOutlet var textFieldsLeadingConstraints: [NSLayoutConstraint]!
     
-    @IBOutlet var facultyNameTextField: UITextField!
+    @IBOutlet var cathedraNameTextField: UITextField!
     @IBOutlet var foundedDateTextField: RestrictTextField!
     @IBOutlet var siteUrlTextField: UITextField!
     @IBOutlet var additionalInfoTextField: UITextField!
@@ -20,20 +19,19 @@ class FacultyCreateEditViewController: BaseTableViewController {
     @IBOutlet var deleteButtonContainerView: UIView!
     @IBOutlet var deleteButton: UIButton!
     
-    var viewModel: FacultyCreateEditViewModel!
+    var viewModel: CathedraCreateEditViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
         setupNavigationBar()
-        setupDatePicker()
         
-        bind(output: viewModel.transform(input: FacultyCreateEditViewModel.Input(
+        bind(output: viewModel.transform(input: CathedraCreateEditViewModel.Input(
             saveTrigger: saveBarButtonItem.rx.tap,
             cancelTrigger: cancelBarButtonItem.rx.tap,
             deleteTrigger: deleteButton.rx.tap,
-            facultyNameChanged: facultyNameTextField.rx.text,
+            cathedraNameChanged: cathedraNameTextField.rx.text,
             foundedDateChanged: foundedDateTextField.rx.text,
             siteUrlChanged: siteUrlTextField.rx.text,
             additionalInfoChanged: additionalInfoTextField.rx.text,
@@ -50,11 +48,11 @@ class FacultyCreateEditViewController: BaseTableViewController {
         setupTextFields()
     }
     
-    private func bind(output: FacultyCreateEditViewModel.Output) {
+    private func bind(output: CathedraCreateEditViewModel.Output) {
         self.rx.viewDidAppear
-            .filter { _ in self.viewModel.facultyToBeEditedSubject.value == nil }
+            .filter { _ in self.viewModel.cathedraToBeEditedSubject.value == nil }
             .bind(onNext: { _ in
-                self.facultyNameTextField.becomeFirstResponder()
+                self.cathedraNameTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
         
@@ -82,8 +80,8 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .drive(saveBarButtonItem!.rx.isEnabled)
             .disposed(by: disposeBag)
         
-        output.facultyName
-            .drive(facultyNameTextField.rx.text)
+        output.cathedraName
+            .drive(cathedraNameTextField.rx.text)
             .disposed(by: disposeBag)
         output.foundedDate
             .drive(foundedDateTextField.rx.text)
@@ -95,12 +93,12 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .drive(additionalInfoTextField.rx.text)
             .disposed(by: disposeBag)
         
-        output.facultyDidManipulate
+        output.cathedraDidManipulate
             .drive(onNext: { _ in
                 self.navigationItem.rightBarButtonItem = self.saveBarButtonItem
             })
             .disposed(by: disposeBag)
-        output.facultyDidManipulate
+        output.cathedraDidManipulate
             .filter { $0 != nil }
             .drive(onNext: { _ in
                 self.navigationController?.dismiss(animated: true)
@@ -115,7 +113,7 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .drive(onNext: toggleDeleteButton(_:))
             .disposed(by: disposeBag)
         
-        viewModel.facultyDeletedSubject
+        viewModel.cathedraDeletedSubject
             .filter { $0 }
             .observeOn(MainScheduler.instance)
             .bind(onNext: { _ in
@@ -148,7 +146,7 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .map { false }
             .bind(to: deleteButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        viewModel.facultyDeletedSubject
+        viewModel.cathedraDeletedSubject
             .observeOn(MainScheduler.instance)
             .bind(onNext: { _ in
                 self.deleteButton.setTitle("DELETE".localized, for: .normal)
@@ -157,7 +155,7 @@ class FacultyCreateEditViewController: BaseTableViewController {
                     .removeFromSuperview()
             })
             .disposed(by: disposeBag)
-        viewModel.facultyDeletedSubject
+        viewModel.cathedraDeletedSubject
             .map { _ in true }
             .bind(to: deleteButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -165,8 +163,8 @@ class FacultyCreateEditViewController: BaseTableViewController {
     
 }
 
-// MARK: - HELPERS FUNSTIONS
-extension FacultyCreateEditViewController {
+// MARK: - HELPER FUNCTIONS
+extension CathedraCreateEditViewController {
     private func setupTableView() {
         foundedDateTextField.inputView = datePicker
     }
@@ -204,9 +202,8 @@ extension FacultyCreateEditViewController {
     }
     
     private func presentError(with message: String) {
-        let alertController = UIAlertController(title: "ERROR_DURING_DELETING_FACULTY_TITLE".localized, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "ERROR_DURING_DELETING_CATHEDRA_TITLE".localized, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK".localized, style: .default))
         present(alertController, animated: true)
     }
-
 }

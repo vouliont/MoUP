@@ -4,8 +4,12 @@
 "API_ERROR_NO_INTERNET" = "No internet connection.";
 "API_ERROR_GENERAL_ERROR" = "General error.";
 "API_ERROR_USER_NOT_FOUND" = "User with this login not found.";
+"API_ERROR_CANNOT_DELETE_FACULTY" = "Maybe it has cathedras";
+"API_ERROR_CANNOT_DELETE_CATHEDRA" = "Maybe it has groups";
 
 "ERROR_HAS_OCCURED_TITLE" = "Error has occured";
+"ERROR_DURING_DELETING_FACULTY_TITLE" = "Failed to delete the faculty";
+"ERROR_DURING_DELETING_CATHEDRA_TITLE" = "Failed to delete the cathedra";
 
 "FROM_DATE" = "From: %@";
 
@@ -15,4 +19,11 @@
 "NEW_FACULTY_TITLE" = "New Faculty";
 "EDIT_FACULTY_TITLE" = "Edit Faculty";
 
+"NEW_CATHEDRA_TITLE" = "New Cathedra";
+"EDIT_CATHEDRA_TITLE" = "Edit Cathedra";
+
 "DELETE" = "Delete";
+
+"NO_FACULTIES" = "No Faculties";
+"NO_CATHEDRAS" = "No Cathedras";
+"NO_GROUPS" = "No Groups";

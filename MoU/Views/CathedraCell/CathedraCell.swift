@@ -2,6 +2,8 @@ import UIKit
 
 class CathedraCell: UITableViewCell {
     
+    static let identifier = CellType.cathedraCell.rawValue
+    
     @IBOutlet var cathedraNameLabel: UILabel!
     @IBOutlet var groupsCountLabel: UILabel!
     

@@ -1,12 +1,9 @@
 import Foundation
 
-struct FacultyCellData {
-    enum CellType: String {
-        case facultyCell = "facultyCell"
-        case loadingCell = "loadingCell"
-    }
+struct FacultyCellData: LoadingCellProtocol {
+    typealias Item = Faculty
     
-    let faculty: Faculty?
-    let cellIdentifier: CellType
+    var item: Faculty?
+    var cellType: CellType
 }
 

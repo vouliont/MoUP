@@ -9,7 +9,8 @@ class FacultyDetailsViewController: BaseViewController {
     @IBOutlet var linkButton: UIButton!
     @IBOutlet var additionalInfoLabel: UILabel!
     @IBOutlet var cathedrasTableView: UITableView!
-    @IBOutlet var tableHeaderView: UIVisualEffectView!
+    @IBOutlet var tableTitleViewHeight: NSLayoutConstraint!
+    @IBOutlet var createNewCathedraButton: UIButton!
     
     private var foundedDateLayoutConstraints = [NSLayoutConstraint]()
     private var linkButtonLayoutConstraints = [NSLayoutConstraint]()
@@ -49,6 +50,21 @@ class FacultyDetailsViewController: BaseViewController {
                 .map { _ in () }
                 .observeOn(MainScheduler.instance)
                 .bind(onNext: facultyDeletionSuccess)
+                .disposed(by: disposeBag)
+            navController.isModalInPresentation = true
+        case FacultyDetailsViewModel.Segue.cathedraDetails:
+            guard let cathedraDetailsViewController = segue.destination as? CathedraDetailsViewController else { return }
+            cathedraDetailsViewController.viewModel = CathedraDetailsViewModel(cathedra: sender as! Cathedra, on: viewModel.facultySubject.value)
+        case FacultiesListViewModel.Segue.createCathedra:
+            guard let navController = segue.destination as? UINavigationController,
+                let cathedraCreateViewController = navController.topViewController as? CathedraCreateEditViewController else { return }
+            cathedraCreateViewController.viewModel = CathedraCreateEditViewModel(cathedraToBeEdited: nil, on: viewModel.facultySubject.value)
+            
+            cathedraCreateViewController.viewModel
+                .cathedraManipulatedSubject
+                .filter { $0 != nil }
+                .map { $0! }
+                .bind(onNext: viewModel.cathedraDidCreate(cathedra:))
                 .disposed(by: disposeBag)
             navController.isModalInPresentation = true
         default:
@@ -109,24 +125,39 @@ class FacultyDetailsViewController: BaseViewController {
         
         output.cathedraCellsData
             .drive(cathedrasTableView.rx.items) { tableView, row, cathedraCellData in
-                if cathedraCellData.cellIdentifier == .loadingCell {
+                if cathedraCellData.cellType == .loadingCell {
                     self.viewModel.loadMoreCathedrasSubject.onNext(())
                 }
-                return self.cell(for: cathedraCellData)
+                let cell = self.cell(for: cathedraCellData)
+                cell.separatorInset.left = cathedraCellData.cellType == .loadingCell ? UIScreen.main.bounds.width : 16
+                return cell
             }.disposed(by: disposeBag)
+        
+        output.cathedraCellsData
+            .map { $0.isEmpty ? "NO_CATHEDRAS".localized : nil }
+            .drive(onNext: cathedrasTableView.setEmptyTitle(_:))
+            .disposed(by: disposeBag)
+        
+        cathedrasTableView.rx.itemSelected
+            .bind(onNext: { indexPath in
+                self.cathedrasTableView.deselectRow(at: indexPath, animated: true)
+                let cathedra = self.viewModel.cathedra(for: indexPath)
+                self.performSegue(withIdentifier: FacultyDetailsViewModel.Segue.cathedraDetails, sender: cathedra)
+            })
+            .disposed(by: disposeBag)
     }
     
 }
 
 extension FacultyDetailsViewController {
     private func setupTableView() {
-        cathedrasTableView.tableHeaderView = tableHeaderView
-        cathedrasTableView.register(UINib(nibName: "CathedraCell", bundle: nil), forCellReuseIdentifier: "cathedraCell")
-        cathedrasTableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: "loadingCell")
+        cathedrasTableView.contentInset.top = tableTitleViewHeight.constant
+        cathedrasTableView.tableFooterView = UIView(frame: .zero)
+        cathedrasTableView.register(UINib(nibName: "CathedraCell", bundle: nil), forCellReuseIdentifier: CathedraCell.identifier)
+        cathedrasTableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: LoadingCell.identifier)
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Faculty"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editFaculty))
     }
     
@@ -146,15 +177,17 @@ extension FacultyDetailsViewController {
     }
     
     private func cell(for data: CathedraCellData) -> UITableViewCell {
-        switch data.cellIdentifier {
+        switch data.cellType {
         case .loadingCell:
-            let cell = cathedrasTableView.dequeueReusableCell(withIdentifier: data.cellIdentifier.rawValue) as! LoadingCell
+            let cell = cathedrasTableView.dequeueReusableCell(withIdentifier: data.cellType.rawValue) as! LoadingCell
             cell.activityIndicator.startAnimating()
             return cell
         case .cathedraCell:
-            let cell = cathedrasTableView.dequeueReusableCell(withIdentifier: data.cellIdentifier.rawValue) as! CathedraCell
-            cell.reset(with: data.cathedra!)
+            let cell = cathedrasTableView.dequeueReusableCell(withIdentifier: data.cellType.rawValue) as! CathedraCell
+            cell.reset(with: data.item!)
             return cell
+        default:
+            return UITableViewCell()
         }
     }
 }

@@ -18,7 +18,7 @@ class FacultyDetailsViewModel: BaseViewModel {
     private let needInitializeCathedrasListSubject = BehaviorRelay<Bool>(value: false)
     private let loadingCathedrasSubject = BehaviorRelay<Bool>(value: false)
     private let cathedraCellsDataSubject = BehaviorRelay<[CathedraCellData]>(value: [
-        CathedraCellData(cathedra: nil, cellIdentifier: .loadingCell)
+        CathedraCellData(item: nil, cellType: .loadingCell)
     ])
     
     private var requestDisposeBag = DisposeBag()
@@ -92,7 +92,7 @@ class FacultyDetailsViewModel: BaseViewModel {
         input.viewDidAppear
             .withLatestFrom(needInitializeCathedrasListSubject) { $1 }
             .filter { $0 }
-            .map { _ in [CathedraCellData(cathedra: nil, cellIdentifier: .loadingCell)] }
+            .map { _ in [CathedraCellData(item: nil, cellType: .loadingCell)] }
             .bind(to: cathedraCellsDataSubject)
             .disposed(by: disposeBag)
         
@@ -110,7 +110,6 @@ class FacultyDetailsViewModel: BaseViewModel {
             dateVisible: formattedFoundedDateSubject
                 .map { !$0.isEmpty }
                 .asDriver(onErrorJustReturn: false),
-            link: linkSubject.asDriver(),
             linkVisible: linkSubject
                 .map { !$0.isEmpty }
                 .asDriver(onErrorJustReturn: false),
@@ -135,7 +134,6 @@ extension FacultyDetailsViewModel {
         let facultyName: Driver<String>
         let formattedFoundedDate: Driver<String>
         let dateVisible: Driver<Bool>
-        let link: Driver<String>
         let linkVisible: Driver<Bool>
         let additionalInfo: Driver<String>
         let additionalInfoVisible: Driver<Bool>
@@ -144,6 +142,8 @@ extension FacultyDetailsViewModel {
     
     struct Segue {
         static let editFaculty = "editFacultySegue"
+        static let cathedraDetails = "cathedraDetailsSegue"
+        static let createCathedra = "createCathedraSegue"
     }
 }
 
@@ -161,15 +161,15 @@ extension FacultyDetailsViewModel {
                     self.totalPagesSubject.accept(pagination.totalPages)
                     
                     var cathedraCellsData = self.cathedraCellsDataSubject.value
-                    if cathedraCellsData.last?.cellIdentifier == CathedraCellData.CellType.loadingCell {
+                    if cathedraCellsData.last?.cellType == CellType.loadingCell {
                         cathedraCellsData.removeLast()
                     }
                     for cathedra in cathedras {
-                        let cathedraCellData = CathedraCellData(cathedra: cathedra, cellIdentifier: .cathedraCell)
+                        let cathedraCellData = CathedraCellData(item: cathedra, cellType: .cathedraCell)
                         cathedraCellsData.append(cathedraCellData)
                     }
                     if pagination.currentPage < pagination.totalPages {
-                        let loadingCellData = CathedraCellData(cathedra: nil, cellIdentifier: .loadingCell)
+                        let loadingCellData = CathedraCellData(item: nil, cellType: .loadingCell)
                         cathedraCellsData.append(loadingCellData)
                     }
                     self.cathedraCellsDataSubject.accept(cathedraCellsData)
@@ -186,8 +186,20 @@ extension FacultyDetailsViewModel {
         currentPageSubject.accept(0)
         totalPagesSubject.accept(1)
         cathedraCellsDataSubject.accept([
-            CathedraCellData(cathedra: nil, cellIdentifier: .loadingCell)
+            CathedraCellData(item: nil, cellType: .loadingCell)
         ])
+    }
+    
+    func cathedraDidCreate(cathedra: Cathedra) {
+        currentPageSubject.accept(0)
+        totalPagesSubject.accept(1)
+        cathedraCellsDataSubject.accept([
+            CathedraCellData(item: nil, cellType: .loadingCell)
+        ])
+    }
+    
+    func cathedra(for indexPath: IndexPath) -> Cathedra {
+        return cathedraCellsDataSubject.value[indexPath.row].item!
     }
     
     private func cancelRequests() {
