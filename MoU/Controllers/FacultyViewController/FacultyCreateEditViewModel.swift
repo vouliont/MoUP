@@ -54,17 +54,21 @@ class FacultyCreateEditViewModel: BaseViewModel {
     
     func transform(input: Input) -> Output {
         input.saveTrigger
-            .bind(onNext: saveFaculty)
+            .bind(onNext: { [unowned self] in
+                self.saveFaculty()
+            })
             .disposed(by: disposeBag)
         
         input.cancelTrigger
-            .bind(onNext: {
+            .bind(onNext: { [unowned self] in
                 self.facultyManipulatedSubject.onCompleted()
             })
             .disposed(by: disposeBag)
         
         input.deleteTrigger
-            .bind(onNext: deleteFaculty)
+            .bind(onNext: { [unowned self] in
+                self.deleteFaculty()
+            })
             .disposed(by: disposeBag)
         
         input.facultyNameChanged
@@ -79,7 +83,7 @@ class FacultyCreateEditViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         input.datePickerValueChanged
-            .filter { _ in self.foundedDateEditingSubject.value }
+            .filter { [unowned self] _ in self.foundedDateEditingSubject.value }
             .bind(to: foundedDateSubject)
             .disposed(by: disposeBag)
         
@@ -110,7 +114,9 @@ class FacultyCreateEditViewModel: BaseViewModel {
         
         input.viewDidDissapear
             .map { _ in () }
-            .bind(onNext: cancelRequests)
+            .bind(onNext: { [unowned self] in
+                self.cancelRequests()
+            })
             .disposed(by: disposeBag)
         
         return Output(
@@ -127,7 +133,7 @@ class FacultyCreateEditViewModel: BaseViewModel {
             additionalInfo: additionalInfoSubject.asDriver(),
             facultyDidManipulate: facultyManipulatedSubject.asDriver(onErrorJustReturn: nil),
             datePickerValue: foundedDateSubject
-                .filter { _ in !self.foundedDateEditingSubject.value }
+                .filter { [unowned self] _ in !self.foundedDateEditingSubject.value }
                 .map { $0 ?? Date() }
                 .asDriver(onErrorJustReturn: Date()),
             deleteButtonVisible: facultyToBeEditedSubject
@@ -189,13 +195,13 @@ extension FacultyCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { faculty in
-                    self.facultyManipulatedSubject.onNext(faculty)
-                    self.facultyManipulatedSubject.onCompleted()
+                onSuccess: { [weak self] faculty in
+                    self?.facultyManipulatedSubject.onNext(faculty)
+                    self?.facultyManipulatedSubject.onCompleted()
                 },
-                onError: {
-                    self.facultyManipulatedSubject.onNext(nil)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.facultyManipulatedSubject.onNext(nil)
+                    self?.errorSubject.accept($0)
                 }
             ).disposed(by: requestDisposeBag)
     }
@@ -212,15 +218,15 @@ extension FacultyCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { faculty in
-                    self.facultyManipulatedSubject.onNext(faculty)
-                    self.facultyManipulatedSubject.onCompleted()
+                onSuccess: { [weak self] faculty in
+                    self?.facultyManipulatedSubject.onNext(faculty)
+                    self?.facultyManipulatedSubject.onCompleted()
                 },
-                onError: {
-                    self.facultyManipulatedSubject.onNext(nil)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.facultyManipulatedSubject.onNext(nil)
+                    self?.errorSubject.accept($0)
                 }
-            ).disposed(by: disposeBag)
+            ).disposed(by: requestDisposeBag)
     }
     
     private func deleteFaculty() {
@@ -231,13 +237,13 @@ extension FacultyCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { _ in
-                    self.facultyDeletedSubject.onNext(true)
-                    self.facultyDeletedSubject.onCompleted()
+                onSuccess: { [weak self] _ in
+                    self?.facultyDeletedSubject.onNext(true)
+                    self?.facultyDeletedSubject.onCompleted()
                 },
-                onError: {
-                    self.facultyDeletedSubject.onNext(false)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.facultyDeletedSubject.onNext(false)
+                    self?.errorSubject.accept($0)
                 }
             ).disposed(by: requestDisposeBag)
     }

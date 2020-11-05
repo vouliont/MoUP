@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="paymentCell" rowHeight="104" id="vcJ-yW-ML0" customClass="PaymentCell" customModule="MoU" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vcJ-yW-ML0" id="ytQ-HD-1d3">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 ₴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAI-j7-HzU">
+                        <rect key="frame" x="16" y="10" width="390" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="320 ₴" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARp-dW-kSR">
+                        <rect key="frame" x="80" y="40" width="39" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGc-gl-GBm">
+                        <rect key="frame" x="16" y="40" width="56" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.05.2012" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vah-yr-Mix">
+                        <rect key="frame" x="333" y="12" width="73" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tGc-gl-GBm" firstAttribute="top" secondItem="qAI-j7-HzU" secondAttribute="bottom" constant="8" id="4tJ-OH-6FC"/>
+                    <constraint firstAttribute="bottom" secondItem="tGc-gl-GBm" secondAttribute="bottom" priority="250" constant="10" id="GuP-2b-etu"/>
+                    <constraint firstItem="tGc-gl-GBm" firstAttribute="leading" secondItem="ytQ-HD-1d3" secondAttribute="leading" constant="16" id="IoR-nq-GzF"/>
+                    <constraint firstItem="ARp-dW-kSR" firstAttribute="centerY" secondItem="tGc-gl-GBm" secondAttribute="centerY" id="NPb-lU-MQI"/>
+                    <constraint firstItem="ARp-dW-kSR" firstAttribute="leading" secondItem="tGc-gl-GBm" secondAttribute="trailing" constant="8" id="Qns-D1-3TR"/>
+                    <constraint firstAttribute="trailing" secondItem="vah-yr-Mix" secondAttribute="trailing" constant="8" id="SCl-Lm-mNp"/>
+                    <constraint firstItem="qAI-j7-HzU" firstAttribute="top" secondItem="ytQ-HD-1d3" secondAttribute="top" constant="10" id="ZGV-BN-VLh"/>
+                    <constraint firstAttribute="trailing" secondItem="qAI-j7-HzU" secondAttribute="trailing" constant="8" id="lNp-Gw-rE5"/>
+                    <constraint firstItem="qAI-j7-HzU" firstAttribute="leading" secondItem="ytQ-HD-1d3" secondAttribute="leading" constant="16" id="xZu-QR-I4X"/>
+                    <constraint firstItem="vah-yr-Mix" firstAttribute="centerY" secondItem="qAI-j7-HzU" secondAttribute="centerY" id="zkK-NE-QdH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="dateLabel" destination="vah-yr-Mix" id="47V-R6-xZl"/>
+                <outlet property="paymentBalanceLabel" destination="ARp-dW-kSR" id="LyY-AN-ch8"/>
+                <outlet property="paymentSumLabel" destination="qAI-j7-HzU" id="u9F-67-X2f"/>
+            </connections>
+            <point key="canvasLocation" x="156.52173913043478" y="121.875"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -48,7 +48,9 @@ class FacultiesListViewController: TemporaryNavBarViewController {
                 .facultyManipulatedSubject
                 .filter { $0 != nil }
                 .map { $0! }
-                .bind(onNext: viewModel.facultyDidCreate(faculty:))
+                .bind(onNext: { [unowned self] in
+                    self.viewModel.facultyDidCreate(faculty: $0)
+                })
                 .disposed(by: disposeBag)
             navController.isModalInPresentation = true
         default:
@@ -58,7 +60,7 @@ class FacultiesListViewController: TemporaryNavBarViewController {
     
     private func bind(output: FacultiesListViewModel.Output) {
         tableView.rx.itemSelected
-            .bind(onNext: { indexPath in
+            .bind(onNext: { [unowned self] indexPath in
                 self.tableView.deselectRow(at: indexPath, animated: true)
             })
             .disposed(by: disposeBag)
@@ -75,11 +77,15 @@ class FacultiesListViewController: TemporaryNavBarViewController {
         
         output.facultyCellsData
             .map { $0.isEmpty ? "NO_FACULTIES".localized : nil }
-            .drive(onNext: tableView.setEmptyTitle(_:))
+            .drive(onNext: { [unowned self] in
+                self.tableView.setEmptyTitle($0)
+            })
             .disposed(by: disposeBag)
         
         output.facultySelected
-            .drive(onNext: presentFaculty)
+            .drive(onNext: { [unowned self] in
+                self.presentFaculty($0)
+            })
             .disposed(by: disposeBag)
     }
     

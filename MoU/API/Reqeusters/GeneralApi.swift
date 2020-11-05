@@ -9,6 +9,12 @@ class GeneralApi: BaseApi {
             ],
             RequestList.deleteCathedra.name: [
                 409: "CANNOT_DELETE_CATHEDRA"
+            ],
+            RequestList.deleteGroup.name: [
+                409: "CANNOT_DELETE_GROUP"
+            ],
+            RequestList.createUser.name: [
+                409: "CANNOT_CREATE_USER"
             ]
         ]
     }
@@ -170,7 +176,8 @@ class GeneralApi: BaseApi {
     
     func loadGroupsList(forCathedraId cathedraId: Int, page: Int = 1) -> Requester<([Group], pagination: Pagination)> {
         let params: [String: Any] = [
-            "cathedraId": cathedraId
+            "cathedraId": cathedraId,
+            "page": page
         ]
         
         return Requester(fullUrl("/group/list"), method: .get, params: params, headers: defaultHeaders) { response in
@@ -238,6 +245,281 @@ class GeneralApi: BaseApi {
         }
     }
     
+    func loadLessonsList(name: String? = nil, groupId: Int? = nil, teacherId: Int? = nil, page: Int = 1) -> Requester<([Lesson], pagination: Pagination)> {
+        var params: [String: Any] = [
+            "page": page
+        ]
+        params["name"] = name
+        params["groupId"] = groupId
+        params["teacherId"] = teacherId
+        
+        return Requester(fullUrl("/lesson/list"), method: .get, params: params, headers: defaultHeaders) { response in
+            guard let json = response.json as? [String: Any],
+                let lessonsJson = json["lessons"] as? [[String: Any]]
+                else { return (nil, self.errorForCode(response.code, of: RequestList.loadLessonsList)) }
+            
+            let currentPage = (json["page"] as? Int) ?? 1
+            let totalPages = (json["totalPages"] as? Int) ?? 1
+            
+            var lessons = [Lesson]()
+            for lessonJson in lessonsJson {
+                guard let lesson = Lesson.parse(from: lessonJson) else {
+                    return (nil, self.errorForCode(response.code, of: RequestList.loadLessonsList))
+                }
+                lessons.append(lesson)
+            }
+            
+            let pagination = Pagination(currentPage: currentPage, totalPages: totalPages)
+            
+            return ((lessons, pagination: pagination), nil)
+        }
+    }
+    
+    func createLesson(named name: String,/* semester: Int,*/ teacherId: Int64) -> Requester<Lesson> {
+        let params: [String: Any] = [
+            "name": name,
+//            "semester": semester,
+            "teacherId": teacherId
+        ]
+        
+        return Requester(fullUrl("/lesson"), method: .post, params: params, headers: defaultHeaders) { response in
+            guard response.code == 201,
+                let lessonJson = response.json as? [String: Any],
+                let lesson = Lesson.parse(from: lessonJson)
+                else { return (nil, self.errorForCode(response.code, of: RequestList.createLesson)) }
+            
+            return (lesson, nil)
+        }
+    }
+    
+    func setLessonGroups(lessonId: Int, groupIds: [Int]) -> Requester<Lesson> {
+        let params: [String: Any] = [
+            "groupsIds": groupIds
+        ]
+        
+        return Requester(fullUrl("/lesson/\(lessonId)/set-groups"), method: .post, params: params, headers: defaultHeaders) { response in
+            guard response.code == 200,
+                let lessonJson = response.json as? [String: Any],
+                let lesson = Lesson.parse(from: lessonJson)
+                else { return (nil, self.errorForCode(response.code, of: RequestList.editLesson)) }
+            
+            return (lesson, nil)
+        }
+    }
+    
+    func editLesson(id: Int, name: String,/* semester: Int,*/ teacherId: Int64) -> Requester<Lesson> {
+        let params: [String: Any] = [
+            "name": name,
+//            "semester": semester,
+            "teacherId": teacherId
+        ]
+        
+        return Requester(fullUrl("/lesson/\(id)"), method: .put, params: params, headers: defaultHeaders) { response in
+            guard response.code == 200,
+                let lessonJson = response.json as? [String: Any],
+                let lesson = Lesson.parse(from: lessonJson)
+                else { return (nil, self.errorForCode(response.code, of: RequestList.editLesson)) }
+            
+            return (lesson, nil)
+        }
+    }
+    
+    func deleteLesson(id: Int) -> Requester<Void> {
+        return Requester(fullUrl("/lesson/\(id)"), method: .delete, headers: defaultHeaders) { response in
+            guard response.code == 204 else {
+                return (nil, self.errorForCode(response.code, of: RequestList.deleteLesson))
+            }
+            
+            return ((), nil)
+        }
+    }
+    
+    func loadUsersList(
+        email: String? = nil,
+        role: User.Role? = .none,
+        groupId: Int? = nil,
+        learnFormId: Int? = nil,
+        cathedraId: Int? = nil,
+        facultyId: Int? = nil,
+        page: Int = 1
+    ) -> Requester<([User], pagination: Pagination)> {
+        var params: [String: Any] = [
+            "page": page
+        ]
+        
+        switch role {
+        case .admin:
+            params["email"] = email
+        case .student:
+            params["groupId"] = groupId
+            params["learnFormId"] = learnFormId
+            params["cathedraId"] = cathedraId
+            params["facultyId"] = facultyId
+        case .teacher:
+            params["cathedraId"] = cathedraId
+            params["facultyId"] = facultyId
+        case .none:
+            break
+        }
+        
+        return Requester(fullUrl("/user/list"), method: .get, params: params, headers: defaultHeaders) { response in
+            guard let json = response.json as? [String: Any],
+                let usersJson = json["users"] as? [[String: Any]]
+                else { return (nil, self.errorForCode(response.code, of: RequestList.loadUsersList)) }
+            
+            let currentPage = (json["page"] as? Int) ?? 1
+            let totalPages = (json["totalPages"] as? Int) ?? 1
+
+            var users = [User]()
+            for userJson in usersJson {
+                guard let user = User.parse(json: userJson) else {
+                    return (nil, self.errorForCode(response.code, of: RequestList.loadUsersList))
+                }
+                users.append(user)
+            }
+            
+            let pagination = Pagination(currentPage: currentPage, totalPages: totalPages)
+            
+            return ((users, pagination: pagination), nil)
+        }
+    }
+    
+    func createUser(
+        firstName: String,
+        lastName: String,
+        middleName: String,
+        loginName: String,
+        email: String,
+        role: User.Role,
+        birthday: String,
+        password: String,
+        cathedraId: Int? = nil,
+        groupId: Int? = nil,
+        learnFormId: Int? = nil
+    ) -> Requester<User> {
+        var params: [String: Any] = [
+            "firstName": firstName,
+            "lastName": lastName,
+            "middleName": middleName,
+            "loginName": loginName,
+            "email": email,
+            "roleName": role.rawValue,
+            "birthday": birthday,
+            "password": password
+        ]
+        
+        switch role {
+        case .student:
+            params["groupId"] = groupId
+            params["learnFormId"] = learnFormId
+        case .teacher:
+            params["cathedraId"] = cathedraId
+        default: break
+        }
+        
+        return Requester(fullUrl("/user"), method: .post, params: params, headers: defaultHeaders) { response in
+            guard var userJson = response.json as? [String: Any] else {
+                return (nil, self.errorForCode(response.code, of: RequestList.createUser))
+            }
+            
+            // lifehack, do not repeat
+            switch role {
+            case .student:
+                if userJson["student"] != nil { break }
+                let studentJson: [String: Any] = [
+                    "groupId": groupId!,
+                    "learnFormId": learnFormId!
+                ]
+                userJson["student"] = studentJson
+            case .teacher:
+                if userJson["teacher"] != nil { break }
+                let teacherJson: [String: Any] = [
+                    "cathedraId": cathedraId!
+                ]
+                userJson["teacker"] = teacherJson
+            default: break
+            }
+            
+            guard let user = User.parse(json: userJson) else {
+                return (nil, self.errorForCode(response.code, of: RequestList.createUser))
+            }
+            
+            return (user, nil)
+        }
+    }
+    
+    func updateUser(
+        id: Int,
+        firstName: String,
+        lastName: String,
+        middleName: String,
+        loginName: String,
+        email: String,
+        currentRole: User.Role,
+        birthday: String,
+        cathedraId: Int? = nil,
+        groupId: Int? = nil,
+        learnFormId: Int? = nil
+    ) -> Requester<User> {
+        var params: [String: Any] = [
+            "firstName": firstName,
+            "lastName": lastName,
+            "middleName": middleName,
+            "loginName": loginName,
+            "email": email,
+            "birthday": birthday
+        ]
+        
+        switch currentRole {
+        case .student:
+            params["groupId"] = groupId
+            params["learnFormId"] = learnFormId
+        case .teacher:
+            params["cathedraId"] = cathedraId
+        default: break
+        }
+        
+        return Requester(fullUrl("/user/\(id)/data"), method: .put, params: params, headers: defaultHeaders) { response in
+            guard var userJson = response.json as? [String: Any] else {
+                return (nil, self.errorForCode(response.code, of: RequestList.editUser))
+            }
+            
+            // lifehack, do not repeat
+            switch currentRole {
+            case .student:
+                if userJson["student"] != nil { break }
+                let studentJson: [String: Any] = [
+                    "groupId": groupId!,
+                    "learnFormId": learnFormId!
+                ]
+                userJson["student"] = studentJson
+            case .teacher:
+                if userJson["teacher"] != nil { break }
+                let teacherJson: [String: Any] = [
+                    "cathedraId": cathedraId!
+                ]
+                userJson["teacker"] = teacherJson
+            default: break
+            }
+            
+            guard let user = User.parse(json: userJson) else {
+                return (nil, self.errorForCode(response.code, of: RequestList.editUser))
+            }
+            
+            return (user, nil)
+        }
+    }
+    
+    func deleteUser(id: Int) -> Requester<Void> {
+        return Requester(fullUrl("/user/\(id)"), method: .delete, headers: defaultHeaders) { response in
+            guard response.code == 204 else {
+                return (nil, self.errorForCode(response.code, of: RequestList.deleteUser))
+            }
+            
+            return ((), nil)
+        }
+    }
+    
 }
 
 extension GeneralApi {
@@ -245,6 +527,8 @@ extension GeneralApi {
         case loadFacultiesList, createFaculty, editFaculty, deleteFaculty
         case loadCathedrasList, createCathedra, editCathedra, deleteCathedra
         case loadGroupsList, createGroup, editGroup, deleteGroup
+        case loadLessonsList, createLesson, setLessonGroups, editLesson, deleteLesson
+        case loadUsersList, createUser, editUser, deleteUser
         
         var name: String {
             return self.rawValue

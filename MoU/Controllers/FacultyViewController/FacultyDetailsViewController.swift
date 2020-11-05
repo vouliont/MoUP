@@ -42,14 +42,18 @@ class FacultyDetailsViewController: BaseViewController {
                 .facultyManipulatedSubject
                 .filter { $0 != nil }
                 .map { $0! }
-                .bind(onNext: viewModel.facultyDidEdit(faculty:))
+                .bind(onNext: { [unowned self] in
+                    self.viewModel.facultyDidEdit(faculty: $0)
+                })
                 .disposed(by: disposeBag)
             facultyEditViewController.viewModel
                 .facultyDeletedSubject
                 .filter { $0 }
                 .map { _ in () }
                 .observeOn(MainScheduler.instance)
-                .bind(onNext: facultyDeletionSuccess)
+                .bind(onNext: { [unowned self] in
+                    self.facultyDeletionSuccess()
+                })
                 .disposed(by: disposeBag)
             navController.isModalInPresentation = true
         case FacultyDetailsViewModel.Segue.cathedraDetails:
@@ -64,7 +68,9 @@ class FacultyDetailsViewController: BaseViewController {
                 .cathedraManipulatedSubject
                 .filter { $0 != nil }
                 .map { $0! }
-                .bind(onNext: viewModel.cathedraDidCreate(cathedra:))
+                .bind(onNext: { [unowned self] in
+                    self.viewModel.cathedraDidCreate(cathedra: $0)
+                })
                 .disposed(by: disposeBag)
             navController.isModalInPresentation = true
         default:
@@ -74,7 +80,9 @@ class FacultyDetailsViewController: BaseViewController {
     
     private func bind(output: FacultyDetailsViewModel.Output) {
         linkButton.rx.controlEvent(.touchUpInside)
-            .bind(onNext: openLink)
+            .bind(onNext: { [unowned self] in
+                self.openLink()
+            })
             .disposed(by: disposeBag)
         
         output.facultyName
@@ -85,7 +93,7 @@ class FacultyDetailsViewController: BaseViewController {
             .drive(foundedDateLabel.rx.text)
             .disposed(by: disposeBag)
         output.dateVisible
-            .drive(onNext: { visible in
+            .drive(onNext: { [unowned self] visible in
                 if visible {
                     self.foundedDateLabel.showWithConstraints(self.foundedDateLayoutConstraints)
                     self.foundedDateLayoutConstraints.removeAll()
@@ -97,7 +105,7 @@ class FacultyDetailsViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.linkVisible
-            .drive(onNext: { visible in
+            .drive(onNext: { [unowned self] visible in
                 if visible {
                     self.linkButton.showWithConstraints(self.linkButtonLayoutConstraints)
                     self.linkButtonLayoutConstraints.removeAll()
@@ -112,7 +120,7 @@ class FacultyDetailsViewController: BaseViewController {
             .drive(additionalInfoLabel.rx.text)
             .disposed(by: disposeBag)
         output.additionalInfoVisible
-            .drive(onNext: { visible in
+            .drive(onNext: { [unowned self] visible in
                 if visible {
                     self.additionalInfoLabel.showWithConstraints(self.additionalInfoLayoutConstraints)
                     self.additionalInfoLayoutConstraints.removeAll()
@@ -135,11 +143,13 @@ class FacultyDetailsViewController: BaseViewController {
         
         output.cathedraCellsData
             .map { $0.isEmpty ? "NO_CATHEDRAS".localized : nil }
-            .drive(onNext: cathedrasTableView.setEmptyTitle(_:))
+            .drive(onNext: { [unowned self] in
+                self.cathedrasTableView.setEmptyTitle($0)
+            })
             .disposed(by: disposeBag)
         
         cathedrasTableView.rx.itemSelected
-            .bind(onNext: { indexPath in
+            .bind(onNext: { [unowned self] indexPath in
                 self.cathedrasTableView.deselectRow(at: indexPath, animated: true)
                 let cathedra = self.viewModel.cathedra(for: indexPath)
                 self.performSegue(withIdentifier: FacultyDetailsViewModel.Segue.cathedraDetails, sender: cathedra)

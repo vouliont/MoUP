@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Admin" representedClassName="Admin" parentEntity="User" syncable="YES" codeGenerationType="category"/>
     <entity name="Session" representedClassName="Session" syncable="YES" codeGenerationType="category">
         <attribute name="token" optional="YES" attributeType="String"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="session" inverseEntity="User"/>
     </entity>
-    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="category">
+    <entity name="Student" representedClassName="Student" parentEntity="User" syncable="YES" codeGenerationType="category">
+        <attribute name="balance" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="blocked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="groupId" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="learnFormId" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="needPaySum" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Teacher" representedClassName="Teacher" parentEntity="User" syncable="YES" codeGenerationType="category">
+        <attribute name="additionalInfo" optional="YES" attributeType="String"/>
+        <attribute name="cathedraId" attributeType="Integer 64" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" isAbstract="YES" syncable="YES" codeGenerationType="category">
         <attribute name="birthday" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES"/>
-        <attribute name="lastActiveTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastName" attributeType="String"/>
         <attribute name="loginName" attributeType="String"/>
         <attribute name="middleName" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
         <attribute name="photoPath" optional="YES" attributeType="String"/>
-        <attribute name="roleName" attributeType="String"/>
-        <attribute name="status" attributeType="String"/>
-        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="session" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="user" inverseEntity="Session"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="user" inverseEntity="Session"/>
     </entity>
     <elements>
         <element name="Session" positionX="-54" positionY="90" width="128" height="73"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="268"/>
+        <element name="Student" positionX="-54" positionY="99" width="128" height="118"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="Teacher" positionX="-54" positionY="99" width="128" height="73"/>
+        <element name="Admin" positionX="-45" positionY="72" width="128" height="43"/>
     </elements>
 </model>

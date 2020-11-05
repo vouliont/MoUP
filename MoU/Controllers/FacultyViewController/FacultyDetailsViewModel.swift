@@ -30,11 +30,13 @@ class FacultyDetailsViewModel: BaseViewModel {
         
         currentPageSubject
             .filter { $0 != 0 }
-            .bind(onNext: loadMoreCathedras(for:))
+            .bind(onNext: { [unowned self] in
+                self.loadMoreCathedras(for: $0)
+            })
             .disposed(by: disposeBag)
         
         loadMoreCathedrasSubject
-            .map { self.currentPageSubject.value + 1 }
+            .map { [unowned self] in self.currentPageSubject.value + 1 }
             .bind(to: currentPageSubject)
             .disposed(by: disposeBag)
         
@@ -98,7 +100,9 @@ class FacultyDetailsViewModel: BaseViewModel {
         
         input.viewDidDisappear
             .map { _ in () }
-            .bind(onNext: cancelRequests)
+            .bind(onNext: { [unowned self] in
+                self.cancelRequests()
+            })
             .disposed(by: disposeBag)
         input.viewDidDisappear
             .bind(to: needInitializeCathedrasListSubject)
@@ -156,11 +160,12 @@ extension FacultyDetailsViewModel {
         App.shared.api.general.loadCathedrasList(facultyId: facultyId, page: page)
             .asSingle()
             .subscribe(
-                onSuccess: { result in
+                onSuccess: { [weak self] result in
+                    guard let strongSelf = self else { return }
                     let (cathedras, pagination) = result
-                    self.totalPagesSubject.accept(pagination.totalPages)
+                    strongSelf.totalPagesSubject.accept(pagination.totalPages)
                     
-                    var cathedraCellsData = self.cathedraCellsDataSubject.value
+                    var cathedraCellsData = strongSelf.cathedraCellsDataSubject.value
                     if cathedraCellsData.last?.cellType == CellType.loadingCell {
                         cathedraCellsData.removeLast()
                     }
@@ -172,22 +177,15 @@ extension FacultyDetailsViewModel {
                         let loadingCellData = CathedraCellData(item: nil, cellType: .loadingCell)
                         cathedraCellsData.append(loadingCellData)
                     }
-                    self.cathedraCellsDataSubject.accept(cathedraCellsData)
+                    strongSelf.cathedraCellsDataSubject.accept(cathedraCellsData)
                 },
-                onError: { error in
-                    self.errorSubject.accept(error)
-                }
+                onError: { [weak self] in self?.errorSubject.accept($0) }
             )
             .disposed(by: requestDisposeBag)
     }
     
     func facultyDidEdit(faculty: Faculty) {
         facultySubject.accept(faculty)
-        currentPageSubject.accept(0)
-        totalPagesSubject.accept(1)
-        cathedraCellsDataSubject.accept([
-            CathedraCellData(item: nil, cellType: .loadingCell)
-        ])
     }
     
     func cathedraDidCreate(cathedra: Cathedra) {

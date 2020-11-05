@@ -6,15 +6,21 @@
 "API_ERROR_USER_NOT_FOUND" = "User with this login not found.";
 "API_ERROR_CANNOT_DELETE_FACULTY" = "Maybe it has cathedras";
 "API_ERROR_CANNOT_DELETE_CATHEDRA" = "Maybe it has groups";
+"API_ERROR_CANNOT_DELETE_GROUP" = "Maybe it has lessons or students";
+"API_ERROR_CANNOT_CREATE_USER" = "User with the same data was created";
 
 "ERROR_HAS_OCCURED_TITLE" = "Error has occured";
 "ERROR_DURING_DELETING_FACULTY_TITLE" = "Failed to delete the faculty";
 "ERROR_DURING_DELETING_CATHEDRA_TITLE" = "Failed to delete the cathedra";
+"ERROR_DURING_DELETING_GROUP_TITLE" = "Failed to delete the group";
+"ERROR_DURING_DELETING_LESSON_TITLE" = "Failed to delete the lesson";
 
 "FROM_DATE" = "From: %@";
 
 "FACULTIES" = "Faculties";
 "CATHEDRAS" = "Cathedras";
+"LESSONS" = "Lessons";
+"BALANCE_MANAGEMENT" = "Balance Management";
 
 "NEW_FACULTY_TITLE" = "New Faculty";
 "EDIT_FACULTY_TITLE" = "Edit Faculty";
@@ -22,8 +28,21 @@
 "NEW_CATHEDRA_TITLE" = "New Cathedra";
 "EDIT_CATHEDRA_TITLE" = "Edit Cathedra";
 
+"NEW_GROUP_TITLE" = "New Group";
+"EDIT_GROUP_TITLE" = "Edit Group";
+
+"NEW_LESSON_TITLE" = "New Lesson";
+"EDIT_LESSON_TITLE" = "Edit Lesson";
+
 "DELETE" = "Delete";
 
 "NO_FACULTIES" = "No Faculties";
 "NO_CATHEDRAS" = "No Cathedras";
 "NO_GROUPS" = "No Groups";
+"NO_LESSONS" = "No Lessons";
+"EMPTY_HISTORY" = "Empty History";
+
+"STUDENTS_COUNT_TEXT" = "Students in the group: %d";
+"SEMESTERS_COUNT_TEXT" = "Semesters: %d";
+
+"AMOUNT_CURRENCY" = "%.2f ₴";

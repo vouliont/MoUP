@@ -20,8 +20,8 @@ class FacultiesListViewModel: BaseViewModel {
         super.init()
         
         loadMoreFacultySubject
-            .filter { !self.loadingFacultiesSubject.value }
-            .map { self.currentPageSubject.value + 1 }
+            .filter { [unowned self] in !self.loadingFacultiesSubject.value }
+            .map { [unowned self] in self.currentPageSubject.value + 1 }
             .bind(to: currentPageSubject)
             .disposed(by: disposeBag)
         
@@ -31,6 +31,7 @@ class FacultiesListViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         facultyCellsDataSubject
+            .skip(1)
             .map { _ in false }
             .bind(to: loadingFacultiesSubject)
             .disposed(by: disposeBag)
@@ -42,7 +43,9 @@ class FacultiesListViewModel: BaseViewModel {
         
         currentPageSubject
             .filter { $0 != 0 }
-            .bind(onNext: loadFaculties(for:))
+            .bind(onNext: { [unowned self] in
+                self.loadFaculties(for: $0)
+            })
             .disposed(by: disposeBag)
         
         needInitializeFacultiesListSubject
@@ -70,13 +73,15 @@ class FacultiesListViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         input.viewDidDisappear
             .map { _ in () }
-            .bind(onNext: cancelRequests)
+            .bind(onNext: { [unowned self] in
+                self.cancelRequests()
+            })
             .disposed(by: disposeBag)
         
         return Output(
             facultyCellsData: facultyCellsDataSubject.asDriver(),
             facultySelected: input.cellDidSelect
-                .map { self.facultyCellsDataSubject.value[$0.row].item }
+                .map { [unowned self] in self.facultyCellsDataSubject.value[$0.row].item }
                 .filter { $0 != nil }
                 .map { $0! }
                 .asDriver(onErrorDriveWith: Driver<Faculty>.empty())
@@ -113,11 +118,12 @@ extension FacultiesListViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(concurrentQueue)
             .subscribe(
-                onSuccess: { result in
+                onSuccess: { [weak self] result in
+                    guard let strongSelf = self else { return }
                     let (faculties, pagination) = result
-                    self.totalPagesSubject.accept(pagination.totalPages)
+                    strongSelf.totalPagesSubject.accept(pagination.totalPages)
                     
-                    var facultyCellsData = self.facultyCellsDataSubject.value
+                    var facultyCellsData = strongSelf.facultyCellsDataSubject.value
                     if facultyCellsData.last?.cellType == CellType.loadingCell {
                         facultyCellsData.removeLast()
                     }
@@ -130,9 +136,9 @@ extension FacultiesListViewModel {
                         facultyCellsData.append(facultyCellData)
                     }
                     
-                    self.facultyCellsDataSubject.accept(facultyCellsData)
+                    strongSelf.facultyCellsDataSubject.accept(facultyCellsData)
                 },
-                onError: { self.errorSubject.accept($0) }
+                onError: { [weak self] in self?.errorSubject.accept($0) }
             )
             .disposed(by: requestDisposeBag)
     }

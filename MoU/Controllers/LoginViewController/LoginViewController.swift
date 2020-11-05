@@ -43,23 +43,25 @@ class LoginViewController: KeyboardViewController {
             .disposed(by: disposeBag)
         
         self.rx.viewDidAppear
-            .bind(onNext: { _ in
+            .bind(onNext: { [unowned self] _ in
                 self.loginTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
         
         output.errorHasOccured
-            .drive(onNext: showError)
+            .drive(onNext: { [unowned self] in
+                self.showError($0)
+            })
             .disposed(by: disposeBag)
         
         logInButton.rx.controlEvent(.touchUpInside)
-            .bind(onNext: { self.lastActiveTextField?.resignFirstResponder() })
+            .bind(onNext: { [unowned self] in self.lastActiveTextField?.resignFirstResponder() })
             .disposed(by: disposeBag)
         
         let textFields: [UITextField] = [loginTextField, passwordTextField]
         textFields.forEach { textField in
             textField.rx.controlEvent(.editingDidBegin)
-                .bind(onNext: { self.lastActiveTextField = textField })
+                .bind(onNext: { [unowned self] in self.lastActiveTextField = textField })
                 .disposed(by: disposeBag)
             textField.rx.controlEvent(.editingDidEnd)
                 .bind(onNext: { textField.layoutIfNeeded() })

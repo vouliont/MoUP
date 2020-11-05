@@ -5,4 +5,6 @@ enum CellType: String {
     case facultyCell = "facultyCell"
     case cathedraCell = "cathedraCell"
     case groupCell = "groupCell"
+    case lessonCell = "lessonCell"
+    case paymentCell = "paymentCell"
 }

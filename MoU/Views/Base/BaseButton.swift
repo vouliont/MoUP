@@ -11,6 +11,9 @@ class BaseButton: UIButton {
     
     @IBInspectable var borderColorDisabled: UIColor?
     
+    @IBInspectable var backgroundColorDefault: UIColor?
+    @IBInspectable var backgroundColorDisabled: UIColor?
+    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return self.layer.cornerRadius
@@ -32,6 +35,7 @@ class BaseButton: UIButton {
     override var isEnabled: Bool {
         didSet {
             self.layer.borderColor = isEnabled ? borderColor?.cgColor : borderColorDisabled?.cgColor
+            self.layer.backgroundColor = isEnabled ? backgroundColorDefault?.cgColor : backgroundColorDisabled?.cgColor
         }
     }
     

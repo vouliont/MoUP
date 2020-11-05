@@ -7,7 +7,7 @@ class Group {
     let cathedraId: Int
     let createdAt: Date!
     var updatedAt: Date!
-    var countStudents: Int = 0
+    var studentsCount: Int = 0
     
     init(id: Int, name: String, cathedraId: Int, numberOfSemesters: Int, createdAt: Date, updatedAt: Date) {
         self.id = id
@@ -37,7 +37,7 @@ class Group {
         )
         
         if let countStudents = json["students"] as? Int {
-            group.countStudents = countStudents
+            group.studentsCount = countStudents
         }
         
         return group

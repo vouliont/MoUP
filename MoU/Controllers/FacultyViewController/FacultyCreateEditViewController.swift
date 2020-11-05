@@ -53,13 +53,13 @@ class FacultyCreateEditViewController: BaseTableViewController {
     private func bind(output: FacultyCreateEditViewModel.Output) {
         self.rx.viewDidAppear
             .filter { _ in self.viewModel.facultyToBeEditedSubject.value == nil }
-            .bind(onNext: { _ in
+            .bind(onNext: { [unowned self] _ in
                 self.facultyNameTextField.becomeFirstResponder()
             })
             .disposed(by: disposeBag)
         
         saveBarButtonItem.rx.tap
-            .bind(onNext: {
+            .bind(onNext: { [unowned self] in
                 let loadingBarButtonItem = UIBarButtonItem()
                 let loadingIndicator = UIActivityIndicatorView(style: .medium)
                 loadingBarButtonItem.customView = loadingIndicator
@@ -69,7 +69,7 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .disposed(by: disposeBag)
         
         cancelBarButtonItem.rx.tap
-            .bind(onNext: {
+            .bind(onNext: { [unowned self] in
                 self.navigationController?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
@@ -96,13 +96,13 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .disposed(by: disposeBag)
         
         output.facultyDidManipulate
-            .drive(onNext: { _ in
+            .drive(onNext: { [unowned self] _ in
                 self.navigationItem.rightBarButtonItem = self.saveBarButtonItem
             })
             .disposed(by: disposeBag)
         output.facultyDidManipulate
             .filter { $0 != nil }
-            .drive(onNext: { _ in
+            .drive(onNext: { [unowned self] _ in
                 self.navigationController?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
@@ -112,13 +112,15 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .disposed(by: disposeBag)
         
         output.deleteButtonVisible
-            .drive(onNext: toggleDeleteButton(_:))
+            .drive(onNext: { [unowned self] in
+                self.toggleDeleteButton($0)
+            })
             .disposed(by: disposeBag)
         
         viewModel.facultyDeletedSubject
             .filter { $0 }
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { _ in
+            .bind(onNext: { [unowned self] _ in
                 self.navigationController?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
@@ -126,12 +128,14 @@ class FacultyCreateEditViewController: BaseTableViewController {
         viewModel.errorSubject
             .filter { $0 is ApiError }
             .map { ($0 as! ApiError).localizedMessage }
-            .bind(onNext: presentError(with:))
+            .bind(onNext: { [unowned self] in
+                self.presentError(with: $0)
+            })
             .disposed(by: disposeBag)
         
         // Delete Button functionality
         deleteButton.rx.tap
-            .bind(onNext: {
+            .bind(onNext: { [unowned self] in
                 self.deleteButton.setTitle(nil, for: .normal)
                 let loadingIndicator = UIActivityIndicatorView(style: .medium)
                 loadingIndicator.center = CGPoint(
@@ -150,7 +154,7 @@ class FacultyCreateEditViewController: BaseTableViewController {
             .disposed(by: disposeBag)
         viewModel.facultyDeletedSubject
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { _ in
+            .bind(onNext: { [unowned self] _ in
                 self.deleteButton.setTitle("DELETE".localized, for: .normal)
                 self.deleteButton.subviews
                     .first(where: { $0.tag == 228 })?

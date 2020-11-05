@@ -32,19 +32,25 @@ class LoginViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         input.logInButtonTriggered
-            .do(onNext: { self.loadingSubject.accept(true) })
+            .do(onNext: { [unowned self] in self.loadingSubject.accept(true) })
             .observeOn(concurrentQueue)
-            .bind(onNext: logIn)
+            .bind(onNext: { [unowned self] in
+                self.logIn()
+            })
             .disposed(by: disposeBag)
         
         tokenLoadedSubject
             .do(onNext: App.shared.tokenDidUpdate)
-            .bind(onNext: getUserInfo)
+            .bind(onNext: { [unowned self] in
+                self.getUserInfo()
+            })
             .disposed(by: disposeBag)
         
         userDataLoadedSubject
             .observeOn(MainScheduler.instance)
-            .bind(onNext: sceneDelegate.loadController)
+            .bind(onNext: { [unowned self] in
+                self.sceneDelegate.loadController()
+            })
             .disposed(by: disposeBag)
 
         let logInButtonEnable = Observable.combineLatest(
@@ -101,10 +107,10 @@ extension LoginViewModel {
             .flatMapCompletable(persistToken)
             .subscribeOn(concurrentQueue)
             .subscribe(
-                onCompleted: { self.tokenLoadedSubject.accept(()) },
-                onError: {
-                    self.errorSubject.accept($0)
-                    self.loadingSubject.accept(false)
+                onCompleted: { [weak self] in self?.tokenLoadedSubject.accept(()) },
+                onError: { [weak self] in
+                    self?.errorSubject.accept($0)
+                    self?.loadingSubject.accept(false)
                 }
             ).disposed(by: requestDisposeBag)
     }
@@ -129,41 +135,18 @@ extension LoginViewModel {
     private func getUserInfo() {
         App.shared.api.session.getUserData(context: backgroundContext)
             .asSingle()
-            .flatMapCompletable(persistUser)
+            .flatMapCompletable({ [unowned self] in
+                App.shared.persistUser($0, context: self.backgroundContext)
+            })
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onCompleted: { self.userDataLoadedSubject.onNext(()) },
-                onError: {
-                    self.errorSubject.accept($0)
-                    self.loadingSubject.accept(false)
+                onCompleted: { [weak self] in self?.userDataLoadedSubject.onNext(()) },
+                onError: { [weak self] in
+                    self?.errorSubject.accept($0)
+                    self?.loadingSubject.accept(false)
                 }
             ).disposed(by: requestDisposeBag)
-    }
-    
-    private func persistUser(_ user: User) -> Completable {
-        return Completable.create { completable in
-            self.backgroundContext.perform {
-                if let photoPath = user.photoPath, let url = URL(string: photoPath) {
-                    user.photo = self.loadUserPhoto(from: url)
-                }
-                
-                self.backgroundContext.insert(user)
-                
-                let session = Session.get(context: self.backgroundContext)!
-                session.user = user
-                
-                do {
-                    try self.backgroundContext.save()
-                    completable(.completed)
-                } catch {
-                    self.backgroundContext.rollback()
-                    completable(.error(error))
-                }
-            }
-            
-            return Disposables.create()
-        }
     }
     
     private func loadUserPhoto(from url: URL) -> Data? {

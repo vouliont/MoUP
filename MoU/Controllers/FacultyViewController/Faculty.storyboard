@@ -10,7 +10,7 @@
         <!--Faculties-->
         <scene sceneID="pSD-jl-mWO">
             <objects>
-                <viewController storyboardIdentifier="facultiesListViewController" id="qQn-fx-tFx" customClass="FacultiesListViewController" customModule="MoU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="facultiesListViewController" title="Faculties" id="qQn-fx-tFx" customClass="FacultiesListViewController" customModule="MoU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tgz-aE-DZ5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jA2-1r-2N8"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Faculties" id="Fog-Ga-j50"/>
                     <connections>
                         <outlet property="tableView" destination="2Dj-a0-M8f" id="gkG-Xe-JvZ"/>
                         <segue destination="lUv-fG-e1t" kind="show" identifier="showFacultySegue" id="GSt-dX-Jrl"/>
@@ -57,8 +56,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From %s " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8N-kN-2Vz">
-                                        <rect key="frame" x="16" y="51.5" width="63.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From: %@" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8N-kN-2Vz">
+                                        <rect key="frame" x="16" y="51.5" width="70" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -93,7 +92,7 @@
                                     <constraint firstAttribute="trailing" secondItem="ZX5-qr-HpS" secondAttribute="trailing" constant="16" id="dTh-Ug-2pW"/>
                                     <constraint firstItem="Fu5-fR-rYr" firstAttribute="top" secondItem="ONC-k2-GyQ" secondAttribute="bottom" priority="241" constant="16" id="eYr-1X-SKY"/>
                                     <constraint firstItem="Fu5-fR-rYr" firstAttribute="leading" secondItem="Bmf-x1-YWg" secondAttribute="leading" constant="16" id="gtP-Xq-gWD"/>
-                                    <constraint firstAttribute="trailing" secondItem="ONC-k2-GyQ" secondAttribute="trailing" priority="250" constant="16" id="oZX-bT-VNw"/>
+                                    <constraint firstAttribute="trailing" secondItem="ONC-k2-GyQ" secondAttribute="trailing" priority="900" constant="16" id="oZX-bT-VNw"/>
                                     <constraint firstItem="ZX5-qr-HpS" firstAttribute="leading" secondItem="ONC-k2-GyQ" secondAttribute="trailing" constant="8" id="tRN-1b-ABM"/>
                                     <constraint firstAttribute="trailing" secondItem="Fu5-fR-rYr" secondAttribute="trailing" constant="16" id="tVo-nV-gRJ"/>
                                     <constraint firstAttribute="bottom" secondItem="Fu5-fR-rYr" secondAttribute="bottom" constant="16" id="xhT-vU-NKJ"/>

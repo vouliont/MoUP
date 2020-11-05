@@ -21,7 +21,8 @@ class HomeViewController: BaseViewController {
         
         bind(output: viewModel.transform(input: HomeViewModel.Input(
             cellSelected: tableView.rx.itemSelected,
-            logOutButtonTriggered: logOutButton.rx.controlEvent(.touchUpInside)
+            logOutButtonTriggered: logOutButton.rx.controlEvent(.touchUpInside),
+            viewDidAppear: self.rx.viewDidAppear
         )))
     }
     
@@ -57,7 +58,7 @@ class HomeViewController: BaseViewController {
             }.disposed(by: disposeBag)
         
         output.needPerformSegue
-            .drive(onNext: {
+            .drive(onNext: { [unowned self] in
                 self.performSegue(withIdentifier: $0, sender: nil)
             })
             .disposed(by: disposeBag)

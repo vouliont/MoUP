@@ -42,6 +42,13 @@
 		2C1A2D772484E74000D3501F /* CathedraCreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D762484E74000D3501F /* CathedraCreateEditViewModel.swift */; };
 		2C1A2D7A2484FD9700D3501F /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D792484FD9700D3501F /* GroupCell.swift */; };
 		2C1A2D7C2484FDD800D3501F /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A2D7B2484FDD800D3501F /* GroupCell.xib */; };
+		2C1A2D7F24850BC000D3501F /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C1A2D7E24850BC000D3501F /* Group.storyboard */; };
+		2C1A2D8124850BCC00D3501F /* GroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D8024850BCC00D3501F /* GroupDetailsViewController.swift */; };
+		2C1A2D8324850BD700D3501F /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D8224850BD700D3501F /* GroupDetailsViewModel.swift */; };
+		2C1A2D8A2485394E00D3501F /* GroupCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D892485394E00D3501F /* GroupCreateEditViewController.swift */; };
+		2C1A2D8C2485395D00D3501F /* GroupCreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D8B2485395D00D3501F /* GroupCreateEditViewModel.swift */; };
+		2C1A2D8E24864A2F00D3501F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D8D24864A2F00D3501F /* Lesson.swift */; };
+		2C1A2D91248687B400D3501F /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C1A2D8F248687B400D3501F /* Student.swift */; };
 		2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25C2475616900D4C0A2 /* UIResponder.swift */; };
 		2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */; };
 		2C46E90C2462F0E6001528CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C46E90B2462F0E6001528CA /* AppDelegate.swift */; };
@@ -77,6 +84,30 @@
 		2C46E980246AF624001528CA /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C46E97F246AF624001528CA /* Home.storyboard */; };
 		2C63322E2475856E00960611 /* TemporaryNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */; };
 		2C6332302475B95400960611 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63322F2475B95400960611 /* UINavigationBar.swift */; };
+		2C7FF515248EBFCD00904B4C /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7FF514248EBFCD00904B4C /* Payment.swift */; };
+		2C7FF518248EC3BD00904B4C /* PaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7FF517248EC3BD00904B4C /* PaymentCell.swift */; };
+		2C7FF51A248EC3C800904B4C /* PaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7FF519248EC3C800904B4C /* PaymentCell.xib */; };
+		2C7FF51C248ECABA00904B4C /* PaymentCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7FF51B248ECABA00904B4C /* PaymentCellData.swift */; };
+		2CA7ACB8248EA91D00884746 /* LiqpayWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7ACB7248EA91D00884746 /* LiqpayWebViewController.swift */; };
+		2CA7ACBA248EA9FE00884746 /* LiqpayWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7ACB9248EA9FE00884746 /* LiqpayWebViewModel.swift */; };
+		2CA7ACBC248EB4FB00884746 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7ACBB248EB4FB00884746 /* NotificationName.swift */; };
+		2CAD68F42487D347008A8AA7 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD68F22487D347008A8AA7 /* Teacher.swift */; };
+		2CAD68F82487D49E008A8AA7 /* Admin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD68F62487D49E008A8AA7 /* Admin.swift */; };
+		2CAD68FD248804D0008A8AA7 /* LessonsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD68FC248804D0008A8AA7 /* LessonsListViewController.swift */; };
+		2CAD68FF248804DC008A8AA7 /* LessonsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD68FE248804DC008A8AA7 /* LessonsListViewModel.swift */; };
+		2CAD6901248804E4008A8AA7 /* Lesson.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAD6900248804E4008A8AA7 /* Lesson.storyboard */; };
+		2CC80663248D04D0008E4973 /* LessonCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC80662248D04D0008E4973 /* LessonCellData.swift */; };
+		2CC80666248D1624008E4973 /* LessonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CC80665248D1624008E4973 /* LessonCell.xib */; };
+		2CC80668248D162D008E4973 /* LessonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC80667248D162D008E4973 /* LessonCell.swift */; };
+		2CC8066A248D19BA008E4973 /* LessonCreateEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC80669248D19BA008E4973 /* LessonCreateEditViewController.swift */; };
+		2CC8066C248D19F9008E4973 /* LessonCreateEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC8066B248D19F8008E4973 /* LessonCreateEditViewModel.swift */; };
+		2CDADD27248E5F5A0021AB01 /* ChooseAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDADD26248E5F5A0021AB01 /* ChooseAmountViewController.swift */; };
+		2CDADD29248E5FCD0021AB01 /* ChooseAmountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CDADD28248E5FCD0021AB01 /* ChooseAmountViewModel.swift */; };
+		2CE1EFDD248D89FD0000CC73 /* PaymentApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EFDC248D89FD0000CC73 /* PaymentApi.swift */; };
+		2CE1EFDF248D8BD80000CC73 /* BalanceManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EFDE248D8BD80000CC73 /* BalanceManagementViewController.swift */; };
+		2CE1EFE2248D8BFA0000CC73 /* BalanceManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EFE1248D8BFA0000CC73 /* BalanceManagementViewModel.swift */; };
+		2CE1EFE4248D8C8E0000CC73 /* BalanceManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CE1EFE3248D8C8E0000CC73 /* BalanceManagement.storyboard */; };
+		2CE1EFE7248D9A240000CC73 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE1EFE6248D9A240000CC73 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -128,6 +159,13 @@
 		2C1A2D762484E74000D3501F /* CathedraCreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CathedraCreateEditViewModel.swift; sourceTree = "<group>"; };
 		2C1A2D792484FD9700D3501F /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		2C1A2D7B2484FDD800D3501F /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
+		2C1A2D7E24850BC000D3501F /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
+		2C1A2D8024850BCC00D3501F /* GroupDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewController.swift; sourceTree = "<group>"; };
+		2C1A2D8224850BD700D3501F /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
+		2C1A2D892485394E00D3501F /* GroupCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEditViewController.swift; sourceTree = "<group>"; };
+		2C1A2D8B2485395D00D3501F /* GroupCreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCreateEditViewModel.swift; sourceTree = "<group>"; };
+		2C1A2D8D24864A2F00D3501F /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		2C1A2D8F248687B400D3501F /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		2C39E25C2475616900D4C0A2 /* UIResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIResponder.swift; sourceTree = "<group>"; };
 		2C39E25F2475673D00D4C0A2 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		2C46E9082462F0E6001528CA /* MoU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +205,30 @@
 		2C46E97F246AF624001528CA /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryNavBarViewController.swift; sourceTree = "<group>"; };
 		2C63322F2475B95400960611 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
+		2C7FF514248EBFCD00904B4C /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		2C7FF517248EC3BD00904B4C /* PaymentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCell.swift; sourceTree = "<group>"; };
+		2C7FF519248EC3C800904B4C /* PaymentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentCell.xib; sourceTree = "<group>"; };
+		2C7FF51B248ECABA00904B4C /* PaymentCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCellData.swift; sourceTree = "<group>"; };
+		2CA7ACB7248EA91D00884746 /* LiqpayWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqpayWebViewController.swift; sourceTree = "<group>"; };
+		2CA7ACB9248EA9FE00884746 /* LiqpayWebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiqpayWebViewModel.swift; sourceTree = "<group>"; };
+		2CA7ACBB248EB4FB00884746 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
+		2CAD68F22487D347008A8AA7 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
+		2CAD68F62487D49E008A8AA7 /* Admin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Admin.swift; sourceTree = "<group>"; };
+		2CAD68FC248804D0008A8AA7 /* LessonsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListViewController.swift; sourceTree = "<group>"; };
+		2CAD68FE248804DC008A8AA7 /* LessonsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsListViewModel.swift; sourceTree = "<group>"; };
+		2CAD6900248804E4008A8AA7 /* Lesson.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lesson.storyboard; sourceTree = "<group>"; };
+		2CC80662248D04D0008E4973 /* LessonCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCellData.swift; sourceTree = "<group>"; };
+		2CC80665248D1624008E4973 /* LessonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LessonCell.xib; sourceTree = "<group>"; };
+		2CC80667248D162D008E4973 /* LessonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCell.swift; sourceTree = "<group>"; };
+		2CC80669248D19BA008E4973 /* LessonCreateEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCreateEditViewController.swift; sourceTree = "<group>"; };
+		2CC8066B248D19F8008E4973 /* LessonCreateEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonCreateEditViewModel.swift; sourceTree = "<group>"; };
+		2CDADD26248E5F5A0021AB01 /* ChooseAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAmountViewController.swift; sourceTree = "<group>"; };
+		2CDADD28248E5FCD0021AB01 /* ChooseAmountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAmountViewModel.swift; sourceTree = "<group>"; };
+		2CE1EFDC248D89FD0000CC73 /* PaymentApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentApi.swift; sourceTree = "<group>"; };
+		2CE1EFDE248D8BD80000CC73 /* BalanceManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceManagementViewController.swift; sourceTree = "<group>"; };
+		2CE1EFE1248D8BFA0000CC73 /* BalanceManagementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceManagementViewModel.swift; sourceTree = "<group>"; };
+		2CE1EFE3248D8C8E0000CC73 /* BalanceManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BalanceManagement.storyboard; sourceTree = "<group>"; };
+		2CE1EFE6248D9A240000CC73 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		7DF349DF78F63B84D00874C7 /* Pods-MoU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoU.release.xcconfig"; path = "Target Support Files/Pods-MoU/Pods-MoU.release.xcconfig"; sourceTree = "<group>"; };
 		9388C37A72EFEC6DC865BF69 /* Pods-MoU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoU.debug.xcconfig"; path = "Target Support Files/Pods-MoU/Pods-MoU.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +274,8 @@
 				2C171CCD247401D7005881F7 /* FacultyCell */,
 				2C171CCF24740BE7005881F7 /* CathedraCell */,
 				2C1A2D782484FD8000D3501F /* GroupCell */,
+				2CC80664248D1602008E4973 /* LessonCell */,
+				2C7FF516248EC3A700904B4C /* PaymentCell */,
 				2C39E25E2475672E00D4C0A2 /* LoadingCell */,
 				2C173DA4247982DE000CCF6C /* RestrictTextField.swift */,
 			);
@@ -226,6 +290,8 @@
 				2C171C97246B597E005881F7 /* FacultyCellData.swift */,
 				2C171CC72473EDE0005881F7 /* CathedraCellData.swift */,
 				2C1A2D6D24815CA500D3501F /* GroupCellData.swift */,
+				2CC80662248D04D0008E4973 /* LessonCellData.swift */,
+				2C7FF51B248ECABA00904B4C /* PaymentCellData.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -278,6 +344,18 @@
 			path = GroupCell;
 			sourceTree = "<group>";
 		};
+		2C1A2D7D24850BAD00D3501F /* GroupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2C1A2D8024850BCC00D3501F /* GroupDetailsViewController.swift */,
+				2C1A2D8224850BD700D3501F /* GroupDetailsViewModel.swift */,
+				2C1A2D892485394E00D3501F /* GroupCreateEditViewController.swift */,
+				2C1A2D8B2485395D00D3501F /* GroupCreateEditViewModel.swift */,
+				2C1A2D7E24850BC000D3501F /* Group.storyboard */,
+			);
+			path = GroupViewController;
+			sourceTree = "<group>";
+		};
 		2C39E25E2475672E00D4C0A2 /* LoadingCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +373,9 @@
 				2C46E97C246AF593001528CA /* HomeViewController */,
 				2C171C81246B0AEB005881F7 /* FacultyViewController */,
 				2C1A2D6024812FC500D3501F /* CathedraViewController */,
+				2C1A2D7D24850BAD00D3501F /* GroupViewController */,
+				2CAD68FA24880485008A8AA7 /* LessonViewController */,
+				2CE1EFE0248D8BDC0000CC73 /* BalanceManagementViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -323,6 +404,7 @@
 				2C46E94F2465763E001528CA /* Localizable.strings */,
 				2C46E9252462FACF001528CA /* API */,
 				2C46E9222462F1E5001528CA /* Extensions */,
+				2CE1EFE5248D9A150000CC73 /* Helpers */,
 				2C46E96224675616001528CA /* Model */,
 				2C46E95424657DF7001528CA /* Base */,
 				2C171C8E246B0F9C005881F7 /* Views */,
@@ -350,6 +432,7 @@
 				2C63322F2475B95400960611 /* UINavigationBar.swift */,
 				2C173DA624799387000CCF6C /* Date.swift */,
 				2C1A2D6724814E2800D3501F /* UITableView.swift */,
+				2CA7ACBB248EB4FB00884746 /* NotificationName.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -371,6 +454,7 @@
 				2C46E92F24630558001528CA /* BaseApi.swift */,
 				2C46E92A2462FBE1001528CA /* SessionApi.swift */,
 				2C171C88246B0D5D005881F7 /* GeneralApi.swift */,
+				2CE1EFDC248D89FD0000CC73 /* PaymentApi.swift */,
 			);
 			path = Reqeusters;
 			sourceTree = "<group>";
@@ -406,6 +490,8 @@
 				2C1A2D6F24815CDB00D3501F /* Group.swift */,
 				2C171C93246B1EF7005881F7 /* Pagination.swift */,
 				2C1A2D69248158A700D3501F /* CellType.swift */,
+				2C1A2D8D24864A2F00D3501F /* Lesson.swift */,
+				2C7FF514248EBFCD00904B4C /* Payment.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +499,9 @@
 		2C46E967246756AE001528CA /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				2CAD68F62487D49E008A8AA7 /* Admin.swift */,
+				2CAD68F22487D347008A8AA7 /* Teacher.swift */,
+				2C1A2D8F248687B400D3501F /* Student.swift */,
 				2C46E96324675631001528CA /* User.swift */,
 				2C46E96C246819C0001528CA /* Session.swift */,
 			);
@@ -436,6 +525,58 @@
 				2C63322D2475856E00960611 /* TemporaryNavBarViewController.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		2C7FF516248EC3A700904B4C /* PaymentCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C7FF517248EC3BD00904B4C /* PaymentCell.swift */,
+				2C7FF519248EC3C800904B4C /* PaymentCell.xib */,
+			);
+			path = PaymentCell;
+			sourceTree = "<group>";
+		};
+		2CAD68FA24880485008A8AA7 /* LessonViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2CAD68FC248804D0008A8AA7 /* LessonsListViewController.swift */,
+				2CAD68FE248804DC008A8AA7 /* LessonsListViewModel.swift */,
+				2CC80669248D19BA008E4973 /* LessonCreateEditViewController.swift */,
+				2CC8066B248D19F8008E4973 /* LessonCreateEditViewModel.swift */,
+				2CAD6900248804E4008A8AA7 /* Lesson.storyboard */,
+			);
+			path = LessonViewController;
+			sourceTree = "<group>";
+		};
+		2CC80664248D1602008E4973 /* LessonCell */ = {
+			isa = PBXGroup;
+			children = (
+				2CC80667248D162D008E4973 /* LessonCell.swift */,
+				2CC80665248D1624008E4973 /* LessonCell.xib */,
+			);
+			path = LessonCell;
+			sourceTree = "<group>";
+		};
+		2CE1EFE0248D8BDC0000CC73 /* BalanceManagementViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2CE1EFDE248D8BD80000CC73 /* BalanceManagementViewController.swift */,
+				2CE1EFE1248D8BFA0000CC73 /* BalanceManagementViewModel.swift */,
+				2CDADD26248E5F5A0021AB01 /* ChooseAmountViewController.swift */,
+				2CDADD28248E5FCD0021AB01 /* ChooseAmountViewModel.swift */,
+				2CA7ACB7248EA91D00884746 /* LiqpayWebViewController.swift */,
+				2CA7ACB9248EA9FE00884746 /* LiqpayWebViewModel.swift */,
+				2CE1EFE3248D8C8E0000CC73 /* BalanceManagement.storyboard */,
+			);
+			path = BalanceManagementViewController;
+			sourceTree = "<group>";
+		};
+		2CE1EFE5248D9A150000CC73 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2CE1EFE6248D9A240000CC73 /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		58B4F596AF2FE75D53B4502D /* Pods */ = {
@@ -509,10 +650,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7FF51A248EC3C800904B4C /* PaymentCell.xib in Resources */,
+				2C1A2D7F24850BC000D3501F /* Group.storyboard in Resources */,
 				2C171C87246B0C10005881F7 /* Faculty.storyboard in Resources */,
 				2C46E91B2462F0E8001528CA /* LaunchScreen.storyboard in Resources */,
 				2C46E94D2465763E001528CA /* Localizable.strings in Resources */,
+				2CAD6901248804E4008A8AA7 /* Lesson.storyboard in Resources */,
 				2C46E9182462F0E8001528CA /* Assets.xcassets in Resources */,
+				2CE1EFE4248D8C8E0000CC73 /* BalanceManagement.storyboard in Resources */,
 				2C171C92246B10BD005881F7 /* LoadingCell.xib in Resources */,
 				2C171CCA2473FAF1005881F7 /* FacultyCell.xib in Resources */,
 				2C46E980246AF624001528CA /* Home.storyboard in Resources */,
@@ -520,6 +665,7 @@
 				2C171CD124740BFB005881F7 /* CathedraCell.xib in Resources */,
 				2C46E9712468236C001528CA /* Login.storyboard in Resources */,
 				2C46E9132462F0E6001528CA /* Main.storyboard in Resources */,
+				2CC80666248D1624008E4973 /* LessonCell.xib in Resources */,
 				2C1A2D64248130A800D3501F /* Cathedra.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,20 +720,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C171C94246B1EF7005881F7 /* Pagination.swift in Sources */,
+				2C1A2D91248687B400D3501F /* Student.swift in Sources */,
 				2C171CD324740C15005881F7 /* CathedraCell.swift in Sources */,
+				2CE1EFDD248D89FD0000CC73 /* PaymentApi.swift in Sources */,
 				2C46E979246991A3001528CA /* BaseNavigationController.swift in Sources */,
 				2C1A2D66248132A300D3501F /* CathedraDetailsViewModel.swift in Sources */,
 				2C46E96124675014001528CA /* BaseButton.swift in Sources */,
 				2C39E25D2475616900D4C0A2 /* UIResponder.swift in Sources */,
+				2C1A2D8324850BD700D3501F /* GroupDetailsViewModel.swift in Sources */,
 				2C46E9102462F0E6001528CA /* LoginViewController.swift in Sources */,
 				2C171C9A246B6027005881F7 /* FacultyDetailsViewModel.swift in Sources */,
+				2C1A2D8124850BCC00D3501F /* GroupDetailsViewController.swift in Sources */,
 				2C1A2D6C2481590000D3501F /* LoadingCellProtocol.swift in Sources */,
+				2CE1EFE7248D9A240000CC73 /* Helpers.swift in Sources */,
+				2CDADD27248E5F5A0021AB01 /* ChooseAmountViewController.swift in Sources */,
+				2CE1EFDF248D8BD80000CC73 /* BalanceManagementViewController.swift in Sources */,
 				2C1A2D7024815CDB00D3501F /* Group.swift in Sources */,
+				2CAD68F82487D49E008A8AA7 /* Admin.swift in Sources */,
 				2C46E95324657DA6001528CA /* LoginViewModel.swift in Sources */,
 				2C46E92D2462FE03001528CA /* Requester.swift in Sources */,
+				2CAD68FF248804DC008A8AA7 /* LessonsListViewModel.swift in Sources */,
 				2C1A2D6A248158A700D3501F /* CellType.swift in Sources */,
 				2C46E97E246AF5A8001528CA /* HomeViewModel.swift in Sources */,
+				2CAD68FD248804D0008A8AA7 /* LessonsListViewController.swift in Sources */,
 				2C1A2D752484E71900D3501F /* CathedraCreateEditViewController.swift in Sources */,
+				2C7FF515248EBFCD00904B4C /* Payment.swift in Sources */,
+				2CA7ACBA248EA9FE00884746 /* LiqpayWebViewModel.swift in Sources */,
 				2C39E2602475673D00D4C0A2 /* LoadingCell.swift in Sources */,
 				2C173DA5247982DE000CCF6C /* RestrictTextField.swift in Sources */,
 				2C46E93024630558001528CA /* BaseApi.swift in Sources */,
@@ -602,6 +760,8 @@
 				2C46E9162462F0E6001528CA /* MoU.xcdatamodeld in Sources */,
 				2C1A2D6E24815CA500D3501F /* GroupCellData.swift in Sources */,
 				2C171C8B246B0D96005881F7 /* Faculty.swift in Sources */,
+				2CDADD29248E5FCD0021AB01 /* ChooseAmountViewModel.swift in Sources */,
+				2CAD68F42487D347008A8AA7 /* Teacher.swift in Sources */,
 				2C46E96D246819C0001528CA /* Session.swift in Sources */,
 				2C46E95624657E0C001528CA /* BaseViewModel.swift in Sources */,
 				2C1A2D6224812FE400D3501F /* CathedraDetailViewController.swift in Sources */,
@@ -614,22 +774,34 @@
 				2C46E97324686FD8001528CA /* App.swift in Sources */,
 				2C46E969246813B7001528CA /* DataStack.swift in Sources */,
 				2C46E90E2462F0E6001528CA /* SceneDelegate.swift in Sources */,
+				2CC80663248D04D0008E4973 /* LessonCellData.swift in Sources */,
 				2C171CD524741050005881F7 /* HomeCellData.swift in Sources */,
+				2CC8066A248D19BA008E4973 /* LessonCreateEditViewController.swift in Sources */,
 				2C171C85246B0B8A005881F7 /* FacultiesListViewModel.swift in Sources */,
+				2CE1EFE2248D8BFA0000CC73 /* BalanceManagementViewModel.swift in Sources */,
+				2C1A2D8C2485395D00D3501F /* GroupCreateEditViewModel.swift in Sources */,
+				2CA7ACB8248EA91D00884746 /* LiqpayWebViewController.swift in Sources */,
+				2C7FF51C248ECABA00904B4C /* PaymentCellData.swift in Sources */,
 				2C46E95F2467390B001528CA /* KeyboardViewController.swift in Sources */,
 				2C1A2D6824814E2800D3501F /* UITableView.swift in Sources */,
 				2C171CC22472D67A005881F7 /* FacultyCreateEditViewModel.swift in Sources */,
 				2C46E97724698F36001528CA /* HomeViewController.swift in Sources */,
 				2C171CC02472D64F005881F7 /* FacultyCreateEditViewController.swift in Sources */,
 				2C171CC82473EDE0005881F7 /* CathedraCellData.swift in Sources */,
+				2C7FF518248EC3BD00904B4C /* PaymentCell.swift in Sources */,
+				2CC80668248D162D008E4973 /* LessonCell.swift in Sources */,
 				2C46E9292462FBAD001528CA /* Api.swift in Sources */,
+				2C1A2D8E24864A2F00D3501F /* Lesson.swift in Sources */,
+				2CC8066C248D19F9008E4973 /* LessonCreateEditViewModel.swift in Sources */,
 				2C171CC42472F0A3005881F7 /* UIView.swift in Sources */,
 				2C63322E2475856E00960611 /* TemporaryNavBarViewController.swift in Sources */,
+				2CA7ACBC248EB4FB00884746 /* NotificationName.swift in Sources */,
 				2C171C98246B597E005881F7 /* FacultyCellData.swift in Sources */,
 				2C46E9752468C537001528CA /* String.swift in Sources */,
 				2C171C83246B0B56005881F7 /* FacultiesListViewController.swift in Sources */,
 				2C46E9272462FAEF001528CA /* ApiError.swift in Sources */,
 				2C46E96524675631001528CA /* User.swift in Sources */,
+				2C1A2D8A2485394E00D3501F /* GroupCreateEditViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,12 @@ class Api: NSObject {
     
     let session: SessionApi
     let general: GeneralApi
+    let payment: PaymentApi
     
     override init() {
         session = SessionApi(baseUrl: baseUrl)
         general = GeneralApi(baseUrl: baseUrl)
+        payment = PaymentApi(baseUrl: baseUrl)
         
         super.init()
         
@@ -26,6 +28,7 @@ class Api: NSObject {
         
         session.defaultHeaders = defaultHeaders
         general.defaultHeaders = defaultHeaders
+        payment.defaultHeaders = defaultHeaders
     }
     
 }

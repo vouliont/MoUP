@@ -57,7 +57,7 @@ class CathedraCreateEditViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         input.cancelTrigger
-            .bind(onNext: {
+            .bind(onNext: { [unowned self] in
                 self.cathedraManipulatedSubject.onCompleted()
             })
             .disposed(by: disposeBag)
@@ -78,7 +78,7 @@ class CathedraCreateEditViewModel: BaseViewModel {
             .disposed(by: disposeBag)
         
         input.datePickerValueChanged
-            .filter { _ in self.foundedDateEditingSubject.value }
+            .filter { [unowned self] _ in self.foundedDateEditingSubject.value }
             .bind(to: foundedDateSubject)
             .disposed(by: disposeBag)
         
@@ -126,7 +126,7 @@ class CathedraCreateEditViewModel: BaseViewModel {
             additionalInfo: additionalInfoSubject.asDriver(),
             cathedraDidManipulate: cathedraManipulatedSubject.asDriver(onErrorJustReturn: nil),
             datePickerValue: foundedDateSubject
-                .filter { _ in !self.foundedDateEditingSubject.value }
+                .filter { [unowned self] _ in !self.foundedDateEditingSubject.value }
                 .map { $0 ?? Date() }
                 .asDriver(onErrorJustReturn: Date()),
             deleteButtonVisible: cathedraToBeEditedSubject
@@ -188,13 +188,13 @@ extension CathedraCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { faculty in
-                    self.cathedraManipulatedSubject.onNext(faculty)
-                    self.cathedraManipulatedSubject.onCompleted()
+                onSuccess: { [weak self] cathedra in
+                    self?.cathedraManipulatedSubject.onNext(cathedra)
+                    self?.cathedraManipulatedSubject.onCompleted()
                 },
-                onError: {
-                    self.cathedraManipulatedSubject.onNext(nil)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.cathedraManipulatedSubject.onNext(nil)
+                    self?.errorSubject.accept($0)
                 }
             ).disposed(by: requestDisposeBag)
     }
@@ -212,15 +212,15 @@ extension CathedraCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { faculty in
-                    self.cathedraManipulatedSubject.onNext(faculty)
-                    self.cathedraManipulatedSubject.onCompleted()
+                onSuccess: { [weak self] cathedra in
+                    self?.cathedraManipulatedSubject.onNext(cathedra)
+                    self?.cathedraManipulatedSubject.onCompleted()
                 },
-                onError: {
-                    self.cathedraManipulatedSubject.onNext(nil)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.cathedraManipulatedSubject.onNext(nil)
+                    self?.errorSubject.accept($0)
                 }
-            ).disposed(by: disposeBag)
+            ).disposed(by: requestDisposeBag)
     }
     
     private func deleteCathedra() {
@@ -231,13 +231,13 @@ extension CathedraCreateEditViewModel {
             .subscribeOn(concurrentQueue)
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onSuccess: { _ in
-                    self.cathedraDeletedSubject.onNext(true)
-                    self.cathedraDeletedSubject.onCompleted()
+                onSuccess: { [weak self] _ in
+                    self?.cathedraDeletedSubject.onNext(true)
+                    self?.cathedraDeletedSubject.onCompleted()
                 },
-                onError: {
-                    self.cathedraDeletedSubject.onNext(false)
-                    self.errorSubject.accept($0)
+                onError: { [weak self] in
+                    self?.cathedraDeletedSubject.onNext(false)
+                    self?.errorSubject.accept($0)
                 }
             ).disposed(by: requestDisposeBag)
     }

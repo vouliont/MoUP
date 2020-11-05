@@ -5,6 +5,8 @@ class KeyboardViewController: BaseViewController {
     @IBOutlet var mainView: UIView!
     @IBOutlet var mainViewBottomPadding: NSLayoutConstraint!
     
+    var defaultBottomPadding: CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,26 +29,19 @@ class KeyboardViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc private func keyboardWillChange(notification: Notification) {
-        let keyboardSizeOptional: CGRect?
-        if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
-            keyboardSizeOptional = keyboardEndSize(from: notification)
-        } else {
-            keyboardSizeOptional = CGRect.zero
-        }
-        guard let keyboardSize = keyboardSizeOptional else {
-            return
-        }
+    @objc func keyboardWillChange(notification: Notification) {
+        let keyboardWillShow = notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification
+        
+        let keyboardHeight: CGFloat = keyboardWillShow ? (keyboardEndSize(from: notification)?.height ?? defaultBottomPadding) : defaultBottomPadding
         let duration = keyboardAnimationDuration(from: notification) ?? 0
         
-        mainViewBottomPadding.constant = keyboardSize.height
-        
+        mainViewBottomPadding.constant = keyboardHeight
         UIView.animate(withDuration: duration) {
             self.mainView.superview?.layoutIfNeeded()
         }
     }
 
-    private func keyboardAnimationDuration(from notification: Notification) -> TimeInterval? {
+    func keyboardAnimationDuration(from notification: Notification) -> TimeInterval? {
         return notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval
     }
     

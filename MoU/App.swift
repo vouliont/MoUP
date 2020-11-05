@@ -1,4 +1,6 @@
 import Foundation
+import CoreData
+import RxSwift
 
 class App {
     static var shared: App!
@@ -11,6 +13,8 @@ class App {
     var session: Session {
         return Session.get() ?? Session.create()
     }
+    
+    private var disposeBag = DisposeBag()
     
     private init() {}
     
@@ -47,6 +51,52 @@ class App {
             }
         }
         
+    }
+    
+    func updateUser(with object: Any? = nil) {
+        DispatchQueue.global(qos: .background).async {
+            self.disposeBag = DisposeBag()
+            
+            let backgroundContext = self.dataStack.newBackgroundContext()
+            self.api.session.getUserData(context: backgroundContext)
+                .asSingle()
+                .flatMapCompletable({
+                    self.persistUser($0, context: backgroundContext)
+                })
+                .subscribe(onCompleted: {
+                    NotificationCenter.default.post(Notification(name: .userDidUpdate, object: object))
+                })
+                .disposed(by: self.disposeBag)
+        }
+    }
+    
+    func persistUser(_ user: User, context: NSManagedObjectContext) -> Completable {
+        return Completable.create { completable in
+            context.perform {
+                if let photoPath = user.photoPath, let url = URL(string: photoPath) {
+                    user.photo = self.loadUserPhoto(from: url)
+                }
+                
+                context.insert(user)
+                
+                let session = Session.get(context: context)!
+                session.user = user
+                
+                do {
+                    try context.save()
+                    completable(.completed)
+                } catch {
+                    context.rollback()
+                    completable(.error(error))
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    private func loadUserPhoto(from url: URL) -> Data? {
+        return try? Data(contentsOf: url)
     }
     
 }

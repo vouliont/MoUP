@@ -28,11 +28,13 @@ class CathedraDetailsViewModel: BaseViewModel {
         
         currentPageSubject
             .filter { $0 != 0 }
-            .bind(onNext: loadMoreGroups(for:))
+            .bind(onNext: { [unowned self] in
+                self.loadMoreGroups(for: $0)
+            })
             .disposed(by: disposeBag)
         
         loadMoreGroupsSubject
-            .map { self.currentPageSubject.value + 1 }
+            .map { [unowned self] in self.currentPageSubject.value + 1 }
             .bind(to: currentPageSubject)
             .disposed(by: disposeBag)
         
@@ -63,7 +65,7 @@ class CathedraDetailsViewModel: BaseViewModel {
             .disposed(by: disposeBag)
     }
     
-    func translate(input: Input) -> Output {
+    func transform(input: Input) -> Output {
         input.viewDidAppear
             .withLatestFrom(needInitializeGroupsListSubject) { $1 }
             .filter { $0 }
@@ -73,7 +75,9 @@ class CathedraDetailsViewModel: BaseViewModel {
         
         input.viewDidDisappear
             .map { _ in () }
-            .bind(onNext: cancelRequests)
+            .bind(onNext: { [unowned self] in
+                self.cancelRequests()
+            })
             .disposed(by: disposeBag)
         input.viewDidDisappear
             .bind(to: needInitializeGroupsListSubject)
@@ -81,6 +85,9 @@ class CathedraDetailsViewModel: BaseViewModel {
         
         return Output(
             cathedraName: cathedraSubject
+                .map { $0.name }
+                .asDriver(onErrorJustReturn: ""),
+            facultyName: facultySubject
                 .map { $0.name }
                 .asDriver(onErrorJustReturn: ""),
             formattedFoundedDate: cathedraSubject
@@ -118,6 +125,7 @@ extension CathedraDetailsViewModel {
     }
     struct Output {
         let cathedraName: Driver<String>
+        let facultyName: Driver<String>
         let formattedFoundedDate: Driver<String>
         let dateVisible: Driver<Bool>
         let linkVisible: Driver<Bool>
@@ -141,11 +149,12 @@ extension CathedraDetailsViewModel {
         App.shared.api.general.loadGroupsList(forCathedraId: cathedraId, page: page)
             .asSingle()
             .subscribe(
-                onSuccess: { result in
+                onSuccess: { [weak self] result in
+                    guard let strongSelf = self else { return }
                     let (groups, pagination) = result
-                    self.totalPagesSubject.accept(pagination.totalPages)
+                    strongSelf.totalPagesSubject.accept(pagination.totalPages)
                     
-                    var groupCellsData = self.groupCellsDataSubject.value
+                    var groupCellsData = strongSelf.groupCellsDataSubject.value
                     if groupCellsData.last?.cellType == CellType.loadingCell {
                         groupCellsData.removeLast()
                     }
@@ -157,10 +166,10 @@ extension CathedraDetailsViewModel {
                         let loadingCellData = GroupCellData(item: nil, cellType: .loadingCell)
                         groupCellsData.append(loadingCellData)
                     }
-                    self.groupCellsDataSubject.accept(groupCellsData)
+                    strongSelf.groupCellsDataSubject.accept(groupCellsData)
                 },
-                onError: { error in
-                    self.errorSubject.accept(error)
+                onError: { [weak self] error in
+                    self?.errorSubject.accept(error)
                 }
             )
             .disposed(by: requestDisposeBag)
@@ -168,6 +177,9 @@ extension CathedraDetailsViewModel {
     
     func cathedraDidEdit(cathedra: Cathedra) {
         cathedraSubject.accept(cathedra)
+    }
+    
+    func groupDidCreate(group: Group) {
         currentPageSubject.accept(0)
         totalPagesSubject.accept(1)
         groupCellsDataSubject.accept([

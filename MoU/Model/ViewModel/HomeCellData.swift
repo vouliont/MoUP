@@ -3,7 +3,11 @@ import Foundation
 struct HomeCellData {
     
     enum Segue: String {
+        // for admin
         case faculties = "facultiesListSegue"
+        case lessons = "lessonsListSegue"
+        // for student
+        case balanceManagement = "balanceManagementSegue"
     }
     
     let title: String

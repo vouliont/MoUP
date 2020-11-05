@@ -16,16 +16,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C3U-es-jjo">
-                                <rect key="frame" x="0.0" y="44" width="414" height="142.5"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="159.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some additional information about this cathedra. lalala blablabla" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYd-83-l4P">
-                                        <rect key="frame" x="16" y="85.5" width="382" height="41"/>
+                                        <rect key="frame" x="16" y="102.5" width="382" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From %s " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bli-f0-6hc">
-                                        <rect key="frame" x="16" y="51.5" width="63.5" height="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From: %@ " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bli-f0-6hc">
+                                        <rect key="frame" x="16" y="68.5" width="74" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -47,32 +47,41 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="26"/>
                                         </state>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Faculty name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="so6-g3-uhL">
+                                        <rect key="frame" x="16" y="47.5" width="334" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="pYd-83-l4P" secondAttribute="bottom" constant="16" id="0hA-H2-EIt"/>
                                     <constraint firstItem="6cl-lu-ttj" firstAttribute="top" secondItem="C3U-es-jjo" secondAttribute="top" constant="16" id="4JN-9c-S8P"/>
+                                    <constraint firstAttribute="bottom" secondItem="so6-g3-uhL" secondAttribute="bottom" priority="240" constant="16" id="73C-uB-DRC"/>
+                                    <constraint firstItem="pYd-83-l4P" firstAttribute="top" secondItem="so6-g3-uhL" secondAttribute="bottom" priority="241" constant="16" id="8BF-vC-j9S"/>
                                     <constraint firstItem="pYd-83-l4P" firstAttribute="leading" secondItem="C3U-es-jjo" secondAttribute="leading" constant="16" id="9qe-Tj-hCX"/>
+                                    <constraint firstItem="so6-g3-uhL" firstAttribute="trailing" secondItem="6cl-lu-ttj" secondAttribute="trailing" id="9ri-0C-bO8"/>
                                     <constraint firstItem="Bli-f0-6hc" firstAttribute="leading" secondItem="C3U-es-jjo" secondAttribute="leading" constant="16" id="Fnv-pv-BrU"/>
                                     <constraint firstAttribute="bottom" secondItem="Bli-f0-6hc" secondAttribute="bottom" priority="242" constant="16" id="JaV-T2-eTo"/>
-                                    <constraint firstItem="Bli-f0-6hc" firstAttribute="top" secondItem="6cl-lu-ttj" secondAttribute="bottom" constant="4" id="Meh-a6-LwB"/>
-                                    <constraint firstAttribute="trailing" secondItem="6cl-lu-ttj" secondAttribute="trailing" priority="250" constant="16" id="SbF-nP-cyA"/>
+                                    <constraint firstItem="Bli-f0-6hc" firstAttribute="top" secondItem="so6-g3-uhL" secondAttribute="bottom" constant="4" id="LCh-hm-Y5Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="6cl-lu-ttj" secondAttribute="trailing" priority="900" constant="16" id="SbF-nP-cyA"/>
                                     <constraint firstItem="yqK-Q1-DMa" firstAttribute="centerY" secondItem="6cl-lu-ttj" secondAttribute="centerY" id="d8W-TT-O4Q"/>
                                     <constraint firstItem="pYd-83-l4P" firstAttribute="top" secondItem="Bli-f0-6hc" secondAttribute="bottom" constant="16" id="ekc-UZ-yIH"/>
+                                    <constraint firstItem="so6-g3-uhL" firstAttribute="top" secondItem="6cl-lu-ttj" secondAttribute="bottom" id="fv3-lZ-c7N"/>
                                     <constraint firstAttribute="trailing" secondItem="yqK-Q1-DMa" secondAttribute="trailing" constant="16" id="gXs-yE-FXC"/>
                                     <constraint firstItem="yqK-Q1-DMa" firstAttribute="leading" secondItem="6cl-lu-ttj" secondAttribute="trailing" constant="8" id="hbF-it-3NC"/>
-                                    <constraint firstItem="pYd-83-l4P" firstAttribute="top" secondItem="6cl-lu-ttj" secondAttribute="bottom" priority="241" constant="16" id="vUF-i6-MfJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="6cl-lu-ttj" secondAttribute="bottom" priority="240" constant="16" id="xEg-zH-Dff"/>
+                                    <constraint firstItem="so6-g3-uhL" firstAttribute="leading" secondItem="C3U-es-jjo" secondAttribute="leading" constant="16" id="q9J-Ed-9gu"/>
                                     <constraint firstAttribute="trailing" secondItem="pYd-83-l4P" secondAttribute="trailing" constant="16" id="yBp-dl-mDb"/>
                                     <constraint firstItem="6cl-lu-ttj" firstAttribute="leading" secondItem="C3U-es-jjo" secondAttribute="leading" constant="16" id="zqJ-6K-Nqj"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-fx-0r1">
-                                <rect key="frame" x="0.0" y="186.5" width="414" height="709.5"/>
+                                <rect key="frame" x="0.0" y="203.5" width="414" height="692.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9H-Ve-8TD">
-                                <rect key="frame" x="0.0" y="186.5" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="203.5" width="414" height="40"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="AUu-f1-Ox7">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,6 +96,9 @@
                                             <rect key="frame" x="321" y="4" width="85" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="Create New"/>
+                                            <connections>
+                                                <segue destination="Hgn-6i-avy" kind="presentation" identifier="createGroupSegue" id="dhJ-3Y-MQV"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -120,16 +132,36 @@
                     <connections>
                         <outlet property="additionalInfoLabel" destination="pYd-83-l4P" id="d6b-LD-FwP"/>
                         <outlet property="cathedraNameLabel" destination="6cl-lu-ttj" id="Orb-aK-wfR"/>
+                        <outlet property="facultyNameLabel" destination="so6-g3-uhL" id="C0F-j9-gFZ"/>
                         <outlet property="foundedDateLabel" destination="Bli-f0-6hc" id="oje-2V-zPB"/>
                         <outlet property="groupsTableView" destination="N2H-fx-0r1" id="kSV-oj-ez8"/>
                         <outlet property="linkButton" destination="yqK-Q1-DMa" id="Ibz-Qd-7gy"/>
                         <outlet property="tableTitleViewHeight" destination="Wf0-eb-aOT" id="ebe-Qg-Re9"/>
                         <segue destination="CC0-Ks-XkQ" kind="presentation" identifier="editCathedraSegue" id="aB0-YE-yJX"/>
+                        <segue destination="tlr-3O-f4k" kind="show" identifier="groupDetailsSegue" id="C3B-AG-npo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uTe-FC-kn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10.144927536231885" y="-99.107142857142847"/>
+        </scene>
+        <!--groupDetailsViewController-->
+        <scene sceneID="JDF-RQ-7Zp">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Group" referencedIdentifier="groupDetailsViewController" id="tlr-3O-f4k" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Mjy-IO-gfu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nr4-w1-gfp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1017" y="-99"/>
+        </scene>
+        <!--groupCreateEditNavController-->
+        <scene sceneID="pXK-V1-LJM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Group" referencedIdentifier="groupCreateEditNavController" id="Hgn-6i-avy" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QlF-NU-Cns" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="991" y="-143"/>
         </scene>
         <!--Cathedra Create Edit View Controller-->
         <scene sceneID="Jqb-gQ-u7t">
@@ -329,7 +361,7 @@
                     <viewLayoutGuide key="safeArea" id="U5C-YR-nqK"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="-99.107142857142847"/>
+            <point key="canvasLocation" x="1880" y="-514"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NR8-v4-mRV">
@@ -347,7 +379,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynB-Pm-LH7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928.98550724637687" y="-99.107142857142847"/>
+            <point key="canvasLocation" x="1017" y="-514"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,6 +9,6 @@ class GroupCell: UITableViewCell {
     
     func reset(with group: Group) {
         groupNameLabel.text = group.name
-        studentsCountLabel.text = String(group.countStudents)
+        studentsCountLabel.text = String(group.studentsCount)
     }
 }
